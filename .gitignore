@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+
+# Pro component previews are pulled in at build time from the private
+# saasforge-ui-pro repo (see scripts/sync-premium-preview.sh and
+# .github/workflows/deploy.yml) — never commit their source here.
+src/components/premium-preview/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

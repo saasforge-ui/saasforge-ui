@@ -1,0 +1,77 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test:run
+
+      - name: Checkout private saasforge-ui-pro (Pro component previews)
+        uses: actions/checkout@v4
+        with:
+          repository: saasforge-ui/saasforge-ui-pro
+          token: ${{ secrets.PRO_REPO_TOKEN }}
+          path: saasforge-ui-pro
+          sparse-checkout: |
+            demo-previews
+
+      - name: Sync Pro component previews
+        run: |
+          mkdir -p src/components/premium-preview
+          cp saasforge-ui-pro/demo-previews/*.tsx src/components/premium-preview/
+          rm -rf saasforge-ui-pro
+
+      - name: Build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          VITE_GITHUB_URL: https://github.com/${{ github.repository }}
+          VITE_KOFI_PRODUCT_URL: ${{ secrets.VITE_KOFI_PRODUCT_URL }}
+          VITE_KOFI_ULTIMATE_URL: ${{ secrets.VITE_KOFI_ULTIMATE_URL }}
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
