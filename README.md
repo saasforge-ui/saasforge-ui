@@ -103,7 +103,7 @@ src/
 
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
-| Price | $0 | $19 | $49 |
+| Price | $0 | $19 | $49 (coming soon) |
 | Components | 5 | 20 | 20 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
@@ -111,13 +111,7 @@ src/
 | Dashboard templates | — | — | ✓ |
 | Lifetime updates | — | ✓ | ✓ |
 
-## Roadmap
-
-- [ ] Publish `saasforge-ui-pro` with the remaining 15 components (full source, types, tests, docs)
-- [ ] Complete dashboard page templates (Ultimate tier)
-- [ ] Wire up a real analytics provider behind `src/lib/analytics.ts`
-
 ## License
 
-Free components in this repository: MIT (see [`LICENSE`](LICENSE)). SaaSForge UI Pro is licensed for use in
-purchasers' own projects — see the Pro repository for its license terms.
+Free components in this repository: MIT (see [`LICENSE`](LICENSE)). SaaSForge UI Pro is a separately licensed
+commercial product for use in purchasers' own projects.

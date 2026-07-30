@@ -22,6 +22,7 @@ export const pricingConfig = {
       description: "Try SaaSForge UI with 5 production-ready components.",
       cta: "Start Free",
       href: "#free-components",
+      comingSoon: false,
       features: [
         "5 components",
         "Basic documentation",
@@ -37,6 +38,7 @@ export const pricingConfig = {
       description: "Everything you need to ship your SaaS dashboard.",
       cta: "Get SaaSForge UI",
       href: "kofi:pro",
+      comingSoon: false,
       features: [
         "All 20 components",
         "Full source code",
@@ -53,8 +55,9 @@ export const pricingConfig = {
       name: "Ultimate",
       price: 49,
       description: "Pro plus complete dashboard templates.",
-      cta: "Get Ultimate",
+      cta: "Coming soon",
       href: "kofi:ultimate",
+      comingSoon: true,
       features: [
         "Everything in Pro",
         "Complete dashboard templates",

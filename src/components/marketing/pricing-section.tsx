@@ -51,11 +51,15 @@ export function PricingSection() {
               </ul>
             </CardContent>
             <CardFooter>
-              {tier.href.startsWith("kofi:") ? (
+              {tier.comingSoon ? (
+                <Button className="w-full" variant="outline" disabled>
+                  {tier.cta}
+                </Button>
+              ) : tier.href.startsWith("kofi:") ? (
                 <PurchaseButton
                   className="w-full"
                   variant={tier.highlighted ? "default" : "outline"}
-                  product={tier.id === "ultimate" ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}
+                  product="saasforge-ui-pro"
                 >
                   {tier.cta}
                 </PurchaseButton>
