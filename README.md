@@ -9,8 +9,7 @@ Production-ready React components for modern SaaS dashboards.
 
 ## Screenshots
 
-_Add screenshots/GIFs here once the demo is deployed — see `docs/deployment.md` for the GitHub Pages deploy flow and
-`/showcase/:slug` for chrome-free component screenshots suitable for README/social use._
+_Add screenshots/GIFs here — `/showcase/:slug` renders any component chrome-free, suitable for README/social use._
 
 ## Why SaaSForge UI?
 
@@ -99,11 +98,6 @@ src/
   them to reskin the whole library without touching component code.
 - Pricing, launch offers and Ko-fi links are configuration-driven — see [`src/lib/config.ts`](src/lib/config.ts).
 - Component metadata (free/pro flag, category, tags) lives in [`src/data/components.ts`](src/data/components.ts).
-
-## Deployment
-
-See [`docs/deployment.md`](docs/deployment.md) for local dev, production build, GitHub Pages deployment via GitHub
-Actions, custom domains, and troubleshooting.
 
 ## Pricing
 
