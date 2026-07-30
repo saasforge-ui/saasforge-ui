@@ -86,8 +86,26 @@ export default function ComponentDetail() {
             <CodeBlock language="bash" code={`npm install ${(doc.installDeps ?? []).join(" ")}`} />
           </section>
 
+          {doc.componentSource && (
+            <section>
+              <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                Component Source
+              </h2>
+              <p className="mb-3 text-sm text-muted-foreground">
+                Copy this file into your project at{" "}
+                <code className="rounded bg-muted px-1.5 py-0.5 text-xs">{doc.componentSourcePath}</code> (or wherever
+                you keep components) — this is the whole implementation, nothing else to fetch.
+              </p>
+              <CodeBlock code={doc.componentSource} />
+            </section>
+          )}
+
           <section>
-            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Usage</h2>
+            <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Usage Example</h2>
+            <p className="mb-3 text-sm text-muted-foreground">
+              How to call the component once you've copied it in. Adjust the import path to match where you placed
+              the file above.
+            </p>
             <CodeBlock code={doc.source ?? ""} />
           </section>
 

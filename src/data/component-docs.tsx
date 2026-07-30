@@ -12,6 +12,12 @@ import analyticsChartSource from "@/examples/analytics-chart-card.example.tsx?ra
 import emptyStateSource from "@/examples/empty-state.example.tsx?raw";
 import confirmationDialogSource from "@/examples/confirmation-dialog.example.tsx?raw";
 
+import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
+import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
+import analyticsChartComponentSource from "@/components/free/analytics-chart-card.tsx?raw";
+import emptyStateComponentSource from "@/components/free/empty-state.tsx?raw";
+import confirmationDialogComponentSource from "@/components/free/confirmation-dialog.tsx?raw";
+
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
 import { SubscriptionStatusCard } from "@/components/premium-preview/subscription-status-card";
@@ -44,7 +50,12 @@ export interface ComponentDocEntry {
   accessibility?: string[];
   customization?: string[];
   responsive?: string[];
+  /** Usage example source (how to call the component). */
   source?: string;
+  /** The component's own implementation file — what you actually copy into your project. Free components only. */
+  componentSource?: string;
+  /** Path shown above the component source block, e.g. "src/components/free/empty-state.tsx". */
+  componentSourcePath?: string;
   preview: React.ReactNode;
 }
 
@@ -74,6 +85,8 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     ],
     responsive: ["Card stacks value and sparkline on narrow containers; wrap in a grid for dashboard layouts."],
     source: revenueAnalyticsSource,
+    componentSource: revenueAnalyticsComponentSource,
+    componentSourcePath: "src/components/free/revenue-analytics-card.tsx",
     preview: (
       <div className="max-w-sm">
         <RevenueAnalyticsExample />
@@ -101,6 +114,8 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     customization: ["Tune `warningThreshold` / `criticalThreshold` per metric type (storage vs. seats vs. API calls)."],
     responsive: ["Designed to sit in a responsive grid of 2-4 cards; scales down gracefully to a single column."],
     source: usageMetricsSource,
+    componentSource: usageMetricsComponentSource,
+    componentSourcePath: "src/components/free/usage-metrics-card.tsx",
     preview: (
       <div className="max-w-sm">
         <UsageMetricsExample />
@@ -125,6 +140,8 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     customization: ["Swap `variant` per use case — area for trends, bar for discrete comparisons, line for precise series."],
     responsive: ["Chart container is fully responsive via Recharts' ResponsiveContainer."],
     source: analyticsChartSource,
+    componentSource: analyticsChartComponentSource,
+    componentSourcePath: "src/components/free/analytics-chart-card.tsx",
     preview: <AnalyticsChartExample />,
   },
   "empty-state": {
@@ -142,6 +159,8 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     customization: ["Swap the `icon` per context — a search icon for empty search results, a folder icon for empty project lists."],
     responsive: ["Content is centered and constrained to a max width so it reads well at any container size."],
     source: emptyStateSource,
+    componentSource: emptyStateComponentSource,
+    componentSourcePath: "src/components/free/empty-state.tsx",
     preview: <EmptyStateExample />,
   },
   "confirmation-dialog": {
@@ -166,6 +185,8 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     customization: ["Use the `destructive` variant only for irreversible actions to keep the signal meaningful."],
     responsive: ["Dialog width is capped and centers on all viewport sizes; buttons stack on very narrow screens."],
     source: confirmationDialogSource,
+    componentSource: confirmationDialogComponentSource,
+    componentSourcePath: "src/components/free/confirmation-dialog.tsx",
     preview: <ConfirmationDialogExample />,
   },
   "dashboard-overview": {
