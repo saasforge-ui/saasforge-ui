@@ -53,41 +53,11 @@ Copy `.env.example` to `.env` and adjust as needed for a custom deployment:
 | `VITE_BASE_PATH` | Base path for the built assets. `/` locally, `/<repo-name>/` on GitHub Pages. |
 | `VITE_SITE_URL` | Canonical site URL used for SEO / Open Graph metadata. |
 | `VITE_GITHUB_URL` | Repository URL used by "View on GitHub" links. |
-| `VITE_KOFI_PRODUCT_URL` | Ko-fi checkout URL for the Pro tier. |
-| `VITE_KOFI_ULTIMATE_URL` | Ko-fi checkout URL for the Ultimate tier. |
+| `VITE_KOFI_PRODUCT_URL` | Ko-fi checkout URL used by the "Get Pro" call-to-action buttons. |
+| `VITE_KOFI_ULTIMATE_URL` | Ko-fi checkout URL used by the "Get Ultimate" call-to-action button. |
 
-### Ko-fi setup (selling Pro / Ultimate)
-
-`VITE_KOFI_PRODUCT_URL` and `VITE_KOFI_ULTIMATE_URL` power every purchase CTA in the app (`PurchaseButton`, used in
-the header, hero, footer, pricing cards, and on every Pro component's detail page). Until they're set, those buttons
-open placeholder Ko-fi URLs. To go live:
-
-1. Create (or use an existing) account at [ko-fi.com](https://ko-fi.com).
-2. Go to **Shop → Add new item → Digital Download** and create two products: "SaaSForge UI Pro" ($19) and
-   "SaaSForge UI Ultimate" ($49).
-3. Copy each product's public page URL into `VITE_KOFI_PRODUCT_URL` / `VITE_KOFI_ULTIMATE_URL` in `.env` for local
-   development, and into **Settings → Secrets and variables → Actions** on GitHub (same two names) so the deploy
-   workflow picks them up — it already reads `secrets.VITE_KOFI_PRODUCT_URL` / `secrets.VITE_KOFI_ULTIMATE_URL` at
-   build time (see `.github/workflows/deploy.yml`).
-4. Redeploy — no other code changes are needed; every CTA reads from `siteConfig` in `src/lib/config.ts`.
-
-### Pro component previews (private source, public demo)
-
-This repo is public, but the `/components/:slug` live previews for the 15 Pro components are real, working
-components — not screenshots. Their source lives in the **private** `saasforge-ui-pro` repo (under
-`demo-previews/`), never in this repo's git history:
-
-- `src/components/premium-preview/` is gitignored here.
-- Locally: clone `saasforge-ui-pro` as a sibling directory and run `./scripts/sync-premium-preview.sh` to copy the
-  preview sources into place before `npm run dev`.
-- In CI: the deploy workflow checks out `saasforge-ui-pro` using a **fine-grained personal access token** (repo
-  contents: read-only, scoped to that single repository) stored as the `PRO_REPO_TOKEN` secret on this repo, copies
-  `demo-previews/*.tsx` into `src/components/premium-preview/`, then deletes the checkout before building. The
-  compiled (minified) result ships in the deployed site; the readable source never touches this repo's git history.
-
-To set this up: generate the token at **github.com/settings/personal-access-tokens/new** with resource owner set to
-the org, repository access limited to `saasforge-ui-pro`, and Contents permission set to Read-only. Add it as
-**Settings → Secrets and variables → Actions → New repository secret** named `PRO_REPO_TOKEN` on this repo.
+Note: the `/components/:slug` pages for non-free components render live previews whose source isn't part of this
+repository — that's intentional and unrelated to any of the above.
 
 ### Custom domain
 

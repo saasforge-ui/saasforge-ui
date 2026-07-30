@@ -41,8 +41,7 @@ Toolbar, Data Export Menu, SaaS Settings Form.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
-The preview-quality source for these lives in [`src/components/premium-preview`](src/components/premium-preview); the
-fully typed, tested, documented version sold to customers lives in the separate `saasforge-ui-pro` repository.
+The fully typed, tested, documented source sold to customers lives in the separate `saasforge-ui-pro` repository.
 
 ## Tech Stack
 
@@ -85,7 +84,6 @@ src/
   components/
     ui/               base primitives (button, card, dialog, ...)
     free/             the 5 free, fully open-source components
-    premium-preview/  live mock-data previews of the 15 Pro components (source not sold)
     marketing/        landing page sections
     common/           shared layout, header/footer, code block, purchase button, etc.
   pages/           routed pages (Home, Pricing, Components/*, Showcase)
@@ -119,9 +117,7 @@ Actions, custom domains, and troubleshooting.
 | Dashboard templates | — | — | ✓ |
 | Lifetime updates | — | ✓ | ✓ |
 
-Get Pro → configured via `VITE_KOFI_PRODUCT_URL` / `VITE_KOFI_ULTIMATE_URL`. Ko-fi isn't set up yet — see the
-"Ko-fi setup" section in [`docs/deployment.md`](docs/deployment.md) for the exact steps to create the two products
-and wire the real URLs in (local `.env` and the GitHub Actions deploy secrets).
+Get Pro → configured via `VITE_KOFI_PRODUCT_URL` / `VITE_KOFI_ULTIMATE_URL` (see `.env.example`).
 
 ## Roadmap
 
