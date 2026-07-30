@@ -111,11 +111,8 @@ src/
 | Dashboard templates | — | — | ✓ |
 | Lifetime updates | — | ✓ | ✓ |
 
-Get Pro → configured via `VITE_KOFI_PRODUCT_URL` / `VITE_KOFI_ULTIMATE_URL` (see `.env.example`).
-
 ## Roadmap
 
-- [ ] Create the Ko-fi "SaaSForge UI Pro" / "SaaSForge UI Ultimate" products and wire real URLs into `.env` / deploy secrets
 - [ ] Publish `saasforge-ui-pro` with the remaining 15 components (full source, types, tests, docs)
 - [ ] Complete dashboard page templates (Ultimate tier)
 - [ ] Wire up a real analytics provider behind `src/lib/analytics.ts`
