@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Lock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { categories, componentRegistry } from "@/data/components";
@@ -10,8 +9,8 @@ export default function ComponentsIndex() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Component Showcase</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          20 production-ready React components for SaaS dashboards. Free components include full source code;
-          Pro components are preview-only until you upgrade.
+          {componentRegistry.length} production-ready React components for SaaS dashboards. Free components include
+          full source code; Pro components are preview-only until you upgrade.
         </p>
       </div>
 
@@ -30,9 +29,7 @@ export default function ComponentsIndex() {
                         {component.isFree ? (
                           <Badge variant="success">FREE</Badge>
                         ) : (
-                          <Badge variant="secondary" className="gap-1">
-                            <Lock className="h-3 w-3" /> PRO
-                          </Badge>
+                          <Badge variant="secondary">PRO</Badge>
                         )}
                       </div>
                       <CardDescription>{component.description}</CardDescription>

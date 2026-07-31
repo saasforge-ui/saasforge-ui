@@ -4,7 +4,9 @@ export type ComponentCategory =
   | "Billing"
   | "Analytics"
   | "Settings"
-  | "Utilities";
+  | "Utilities"
+  | "Auth"
+  | "Marketing";
 
 export interface ComponentProductMetadata {
   slug: string;

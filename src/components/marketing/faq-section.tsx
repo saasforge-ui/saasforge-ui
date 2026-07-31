@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "What do I get with SaaSForge UI Pro?",
     answer:
-      "All 20 production-ready components with full TypeScript source, dark mode, documentation, usage examples, and lifetime updates for a single one-time payment.",
+      "All production-ready components — and every new one we ship after — with full TypeScript source, dark mode, documentation, usage examples, and lifetime updates for a single one-time payment.",
   },
   {
     question: "Can I use SaaSForge UI in commercial projects?",
@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "Do the free components expire or become limited?",
     answer:
-      "No. The 5 free components remain fully usable indefinitely — there's no trial period or feature reduction.",
+      "No. The free components remain fully usable indefinitely — there's no trial period or feature reduction.",
   },
   {
     question: "Does this include a backend or database?",

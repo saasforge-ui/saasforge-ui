@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { Lock } from "lucide-react";
 import { categories, componentRegistry } from "@/data/components";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +25,11 @@ export function ComponentsSidebar() {
                     }
                   >
                     <span>{component.name}</span>
-                    {!component.isFree && <Lock className="h-3 w-3 shrink-0" aria-label="Pro component" />}
+                    {!component.isFree && (
+                      <span className="shrink-0 rounded-full bg-primary/10 px-1.5 text-[10px] font-medium text-primary">
+                        PRO
+                      </span>
+                    )}
                   </NavLink>
                 </li>
               ))}

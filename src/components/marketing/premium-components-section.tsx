@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { PurchaseButton } from "@/components/common/purchase-button";
 import { Badge } from "@/components/ui/badge";
 import { componentRegistry } from "@/data/components";
@@ -9,7 +9,9 @@ export function PremiumComponentsSection() {
     <section className="border-t border-border bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">20 components. One dashboard's worth of work, skipped.</h2>
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {componentRegistry.length} components. One dashboard's worth of work, skipped.
+          </h2>
           <p className="mt-3 text-muted-foreground">
             Every component ships with TypeScript types, states, and documentation. Free components are fully open —
             Pro components are preview-only until you upgrade.
@@ -30,8 +32,8 @@ export function PremiumComponentsSection() {
                     FREE
                   </Badge>
                 ) : (
-                  <Badge variant="secondary" className="shrink-0 gap-1">
-                    <Lock className="h-3 w-3" /> PRO
+                  <Badge variant="secondary" className="shrink-0">
+                    PRO
                   </Badge>
                 )}
               </div>
@@ -42,7 +44,7 @@ export function PremiumComponentsSection() {
 
         <div className="mt-10 text-center">
           <PurchaseButton size="lg">
-            Get all 20 components
+            Get all {componentRegistry.length} components
             <ArrowRight />
           </PurchaseButton>
         </div>

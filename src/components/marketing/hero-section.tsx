@@ -5,6 +5,7 @@ import { GithubIcon } from "@/components/common/github-icon";
 import { PurchaseButton } from "@/components/common/purchase-button";
 import { siteConfig } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
+import { freeComponents } from "@/data/components";
 
 export function HeroSection() {
   return (
@@ -27,7 +28,7 @@ export function HeroSection() {
         </PurchaseButton>
         <Button size="lg" variant="outline" asChild>
           <Link to="/components?tier=free" onClick={() => trackEvent("free_component_click", { path: "hero" })}>
-            Get 5 Components Free
+            Get {freeComponents.length} Components Free
           </Link>
         </Button>
         <Button size="lg" variant="ghost" asChild>

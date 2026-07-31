@@ -2,10 +2,10 @@
 
 Production-ready React components for modern SaaS dashboards.
 
-[Live Demo](#) · [Free Components](#free-vs-pro) · [Get Pro](#pricing)
+[Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Free Components](#free-vs-pro) · [Get Pro](#pricing)
 
-> Stop rebuilding the same SaaS dashboard UI. 20 production-ready React components built with React, TypeScript and
-> Tailwind CSS. Copy, customize, ship.
+> Stop rebuilding the same SaaS dashboard UI. Production-ready React components — and growing — built with React,
+> TypeScript and Tailwind CSS. Copy, customize, ship.
 
 ## Screenshots
 
@@ -20,8 +20,9 @@ _Add screenshots/GIFs here — `/showcase/:slug` renders any component chrome-fr
 
 ## Components
 
-20 components across Dashboard, Users, Billing, Analytics, Settings and Utilities. See the full list and live
-previews at `/components` in the demo app, or in [`src/data/components.ts`](src/data/components.ts).
+28 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth and Marketing — and growing.
+See the full list and live previews at `/components` in the demo app, or in
+[`src/data/components.ts`](src/data/components.ts).
 
 ### Free vs Pro
 
@@ -32,11 +33,14 @@ previews at `/components` in the demo app, or in [`src/data/components.ts`](src/
 - Analytics Chart Card
 - Empty State
 - Confirmation Dialog System
+- Login Form
+- FAQ Accordion Section
 
-**Pro (SaaSForge UI Pro — 15 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 21 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
-Toolbar, Data Export Menu, SaaS Settings Form.
+Toolbar, Data Export Menu, SaaS Settings Form, Signup Form, Onboarding Wizard, Reset Password Flow, Feature Grid
+Section, CTA Banner Section, Goal Progress Card.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
@@ -82,7 +86,7 @@ npm run test:run    # single run (used in CI)
 src/
   components/
     ui/               base primitives (button, card, dialog, ...)
-    free/             the 5 free, fully open-source components
+    free/             the 7 free, fully open-source components
     marketing/        landing page sections
     common/           shared layout, header/footer, code block, purchase button, etc.
   pages/           routed pages (Home, Pricing, Components/*, Showcase)
@@ -104,7 +108,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 (coming soon) |
-| Components | 5 | 20 | 20 |
+| Components | 7 | 28 | 28 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |

@@ -5,18 +5,24 @@ import UsageMetricsExample from "@/examples/usage-metrics-card.example";
 import AnalyticsChartExample from "@/examples/analytics-chart-card.example";
 import EmptyStateExample from "@/examples/empty-state.example";
 import ConfirmationDialogExample from "@/examples/confirmation-dialog.example";
+import LoginFormExample from "@/examples/login-form.example";
+import FAQAccordionExample from "@/examples/faq-accordion.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
 import analyticsChartSource from "@/examples/analytics-chart-card.example.tsx?raw";
 import emptyStateSource from "@/examples/empty-state.example.tsx?raw";
 import confirmationDialogSource from "@/examples/confirmation-dialog.example.tsx?raw";
+import loginFormSource from "@/examples/login-form.example.tsx?raw";
+import faqAccordionSource from "@/examples/faq-accordion.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
 import analyticsChartComponentSource from "@/components/free/analytics-chart-card.tsx?raw";
 import emptyStateComponentSource from "@/components/free/empty-state.tsx?raw";
 import confirmationDialogComponentSource from "@/components/free/confirmation-dialog.tsx?raw";
+import loginFormComponentSource from "@/components/free/login-form.tsx?raw";
+import faqAccordionComponentSource from "@/components/free/faq-accordion-section.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -33,6 +39,12 @@ import { OrganizationSwitcher } from "@/components/premium-preview/organization-
 import { FilterToolbar } from "@/components/premium-preview/filter-toolbar";
 import { DataExportMenu } from "@/components/premium-preview/data-export-menu";
 import { SettingsForm } from "@/components/premium-preview/settings-form";
+import { SignupForm } from "@/components/premium-preview/signup-form";
+import { OnboardingWizard } from "@/components/premium-preview/onboarding-wizard";
+import { ResetPasswordFlow } from "@/components/premium-preview/reset-password-flow";
+import { FeatureGridSection } from "@/components/premium-preview/feature-grid";
+import { CTABannerSection } from "@/components/premium-preview/cta-banner";
+import { GoalProgressCard } from "@/components/premium-preview/goal-progress-card";
 
 export interface PropRow {
   name: string;
@@ -252,5 +264,67 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "settings-form": {
     slug: "settings-form",
     preview: <SettingsForm />,
+  },
+  "login-form": {
+    slug: "login-form",
+    installDeps: ["react-hook-form", "zod", "@hookform/resolvers", "lucide-react"],
+    props: [
+      { name: "onSubmit", type: "(values: LoginFormValues) => void", required: true, description: "Called with validated values on submit." },
+      { name: "onForgotPassword", type: "() => void", description: "Shows a \"Forgot password?\" link when provided." },
+      { name: "onSignUp", type: "() => void", description: "Shows a \"Don't have an account?\" link when provided." },
+      { name: "oauthProviders", type: "OAuthProvider[]", default: "[]", description: "Renders an OAuth button row when non-empty." },
+      { name: "onOAuthClick", type: "(providerId: string) => void", description: "Called when an OAuth button is clicked." },
+      { name: "isSubmitting", type: "boolean", default: "false", description: "Disables the submit button and shows a spinner." },
+      { name: "error", type: "string", description: "Shown as a banner above the fields when set." },
+    ],
+    states: ["Normal", "Validation errors", "Submitting", "Error banner", "With OAuth providers"],
+    accessibility: ["Every field has an associated `Label`; validation errors render directly below their field."],
+    customization: ["Omit `oauthProviders` to render a plain email/password form with no divider."],
+    responsive: ["Capped at `max-w-sm`; OAuth buttons lay out in an even grid based on the provider count."],
+    source: loginFormSource,
+    componentSource: loginFormComponentSource,
+    componentSourcePath: "src/components/free/login-form.tsx",
+    preview: <LoginFormExample />,
+  },
+  "signup-form": {
+    slug: "signup-form",
+    preview: <SignupForm />,
+  },
+  "onboarding-wizard": {
+    slug: "onboarding-wizard",
+    preview: <OnboardingWizard />,
+  },
+  "reset-password-flow": {
+    slug: "reset-password-flow",
+    preview: <ResetPasswordFlow />,
+  },
+  "faq-accordion": {
+    slug: "faq-accordion",
+    installDeps: ["@radix-ui/react-accordion"],
+    props: [
+      { name: "title", type: "string", default: '"Frequently asked questions"', description: "Section heading." },
+      { name: "description", type: "string", description: "Optional supporting text under the heading." },
+      { name: "items", type: "FAQItem[]", required: true, description: "Question/answer pairs, rendered in order." },
+    ],
+    states: ["Collapsed (default)", "One item expanded"],
+    accessibility: ["Built on Radix Accordion: triggers are real buttons and expose `aria-expanded` automatically."],
+    customization: ["Swap `type=\"single\"` for `type=\"multiple\"` on the underlying `Accordion` to allow several open at once."],
+    responsive: ["Capped at `max-w-2xl`; reads well as a centered section on a landing page."],
+    source: faqAccordionSource,
+    componentSource: faqAccordionComponentSource,
+    componentSourcePath: "src/components/free/faq-accordion-section.tsx",
+    preview: <FAQAccordionExample />,
+  },
+  "feature-grid": {
+    slug: "feature-grid",
+    preview: <FeatureGridSection />,
+  },
+  "cta-banner": {
+    slug: "cta-banner",
+    preview: <CTABannerSection />,
+  },
+  "goal-progress-card": {
+    slug: "goal-progress-card",
+    preview: <GoalProgressCard />,
   },
 };

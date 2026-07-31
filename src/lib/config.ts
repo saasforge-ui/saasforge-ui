@@ -1,6 +1,8 @@
+import { componentRegistry, freeComponents } from "@/data/components";
+
 export const siteConfig = {
   name: "SaaSForge UI",
-  tagline: "20 production-ready React components for modern SaaS dashboards.",
+  tagline: "Production-ready React components for modern SaaS dashboards — and growing.",
   siteUrl: import.meta.env.VITE_SITE_URL || "https://saasforge-ui.github.io/saasforge-ui",
   githubUrl: import.meta.env.VITE_GITHUB_URL || "https://github.com/saasforge-ui/saasforge-ui",
   kofiProductUrl: import.meta.env.VITE_KOFI_PRODUCT_URL || "https://ko-fi.com/s/your-product-id",
@@ -19,12 +21,12 @@ export const pricingConfig = {
       id: "free",
       name: "Free",
       price: 0,
-      description: "Try SaaSForge UI with 5 production-ready components.",
+      description: `Try SaaSForge UI with ${freeComponents.length} production-ready components.`,
       cta: "Start Free",
       href: "#free-components",
       comingSoon: false,
       features: [
-        "5 components",
+        `${freeComponents.length} components`,
         "Basic documentation",
         "Community support",
         "GitHub access",
@@ -40,7 +42,7 @@ export const pricingConfig = {
       href: "kofi:pro",
       comingSoon: false,
       features: [
-        "All 20 components",
+        `All ${componentRegistry.length} components, including new releases`,
         "Full source code",
         "TypeScript & Tailwind",
         "Dark mode",

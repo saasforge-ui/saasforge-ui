@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Lock } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/common/code-block";
@@ -33,9 +33,7 @@ export default function ComponentDetail() {
           {component.isFree ? (
             <Badge variant="success">FREE</Badge>
           ) : (
-            <Badge variant="secondary" className="gap-1">
-              <Lock className="h-3 w-3" /> PRO
-            </Badge>
+            <Badge variant="secondary">PRO</Badge>
           )}
         </div>
         <p className="mt-2 text-muted-foreground">{component.description}</p>
@@ -55,8 +53,10 @@ export default function ComponentDetail() {
             {doc ? (
               doc.preview
             ) : (
-              <div className="flex w-full flex-col items-center gap-4 rounded-lg border border-dashed border-border py-12 text-center">
-                <Lock className="h-8 w-8 text-muted-foreground" aria-hidden="true" />
+              <div className="flex w-full flex-col items-center gap-4 rounded-lg border border-primary/20 bg-primary/5 py-12 text-center">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Sparkles className="h-6 w-6" aria-hidden="true" />
+                </span>
                 <div>
                   <p className="font-medium">Full preview available in Pro</p>
                   <p className="mt-1 max-w-sm text-sm text-muted-foreground">
