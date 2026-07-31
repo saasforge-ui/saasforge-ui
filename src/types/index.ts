@@ -6,7 +6,11 @@ export type ComponentCategory =
   | "Settings"
   | "Utilities"
   | "Auth"
-  | "Marketing";
+  | "Marketing"
+  | "Ecommerce"
+  | "Communication"
+  | "Data"
+  | "Navigation";
 
 export interface ComponentProductMetadata {
   slug: string;
@@ -135,3 +139,24 @@ export interface PricingPlan {
   recommended?: boolean;
   features: PricingPlanFeature[];
 }
+
+export interface CartItem {
+  id: string;
+  name: string;
+  variant?: string;
+  price: number;
+  quantity: number;
+  imageUrl?: string;
+}
+
+export interface ProductItem {
+  id: string;
+  name: string;
+  price: number;
+  rating?: number;
+  inStock: boolean;
+  imageUrl?: string;
+  description?: string;
+}
+
+export type OrderStatus = "placed" | "processing" | "shipped" | "out_for_delivery" | "delivered";

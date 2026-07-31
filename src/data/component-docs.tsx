@@ -8,6 +8,10 @@ import ConfirmationDialogExample from "@/examples/confirmation-dialog.example";
 import LoginFormExample from "@/examples/login-form.example";
 import FAQAccordionExample from "@/examples/faq-accordion.example";
 import SignupFormExample from "@/examples/signup-form.example";
+import OrderSummaryCardExample from "@/examples/order-summary-card.example";
+import ProductCardGridExample from "@/examples/product-card-grid.example";
+import CouponCodeInputExample from "@/examples/coupon-code-input.example";
+import OrderConfirmationCardExample from "@/examples/order-confirmation-card.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -17,6 +21,10 @@ import confirmationDialogSource from "@/examples/confirmation-dialog.example.tsx
 import loginFormSource from "@/examples/login-form.example.tsx?raw";
 import faqAccordionSource from "@/examples/faq-accordion.example.tsx?raw";
 import signupFormSource from "@/examples/signup-form.example.tsx?raw";
+import orderSummaryCardSource from "@/examples/order-summary-card.example.tsx?raw";
+import productCardGridSource from "@/examples/product-card-grid.example.tsx?raw";
+import couponCodeInputSource from "@/examples/coupon-code-input.example.tsx?raw";
+import orderConfirmationCardSource from "@/examples/order-confirmation-card.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -26,6 +34,10 @@ import confirmationDialogComponentSource from "@/components/free/confirmation-di
 import loginFormComponentSource from "@/components/free/login-form.tsx?raw";
 import faqAccordionComponentSource from "@/components/free/faq-accordion-section.tsx?raw";
 import signupFormComponentSource from "@/components/free/signup-form.tsx?raw";
+import orderSummaryCardComponentSource from "@/components/free/order-summary-card.tsx?raw";
+import productCardGridComponentSource from "@/components/free/product-card-grid.tsx?raw";
+import couponCodeInputComponentSource from "@/components/free/coupon-code-input.tsx?raw";
+import orderConfirmationCardComponentSource from "@/components/free/order-confirmation-card.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -47,6 +59,13 @@ import { ResetPasswordFlow } from "@/components/premium-preview/reset-password-f
 import { FeatureGridSection } from "@/components/premium-preview/feature-grid";
 import { CTABannerSection } from "@/components/premium-preview/cta-banner";
 import { GoalProgressCard } from "@/components/premium-preview/goal-progress-card";
+import { ShoppingCartDrawer } from "@/components/premium-preview/shopping-cart-drawer";
+import { PaymentMethodSelector } from "@/components/premium-preview/payment-method-selector";
+import { ShippingAddressForm } from "@/components/premium-preview/shipping-address-form";
+import { OrderTrackingTimeline } from "@/components/premium-preview/order-tracking-timeline";
+import { CheckoutStepper } from "@/components/premium-preview/checkout-stepper";
+import { WishlistItemList } from "@/components/premium-preview/wishlist-item-list";
+import { ProductQuickViewModal } from "@/components/premium-preview/product-quick-view-modal";
 
 export interface PropRow {
   name: string;
@@ -342,5 +361,110 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "goal-progress-card": {
     slug: "goal-progress-card",
     preview: <GoalProgressCard />,
+  },
+  "order-summary-card": {
+    slug: "order-summary-card",
+    installDeps: [],
+    props: [
+      { name: "items", type: "OrderSummaryLineItem[]", required: true, description: "Line items (label + amount) shown above the totals." },
+      { name: "subtotal", type: "number", required: true, description: "Order subtotal." },
+      { name: "shipping", type: "number", description: "Shipping cost; pass 0 to show \"Free\"." },
+      { name: "tax", type: "number", description: "Tax amount." },
+      { name: "discount", type: "number", description: "Discount amount, shown in green when > 0." },
+      { name: "total", type: "number", required: true, description: "Grand total." },
+      { name: "currency", type: "string", default: '"USD"', description: "ISO currency code used for formatting." },
+    ],
+    states: ["Normal", "With discount", "Without shipping/tax"],
+    accessibility: ["Line items and totals are in reading order; the total is visually and semantically distinct via the footer."],
+    customization: ["Pass any number of `items` — useful for showing per-product or per-category subtotals."],
+    responsive: ["Capped at `max-w-sm`; labels and amounts stay on one line down to narrow mobile widths."],
+    source: orderSummaryCardSource,
+    componentSource: orderSummaryCardComponentSource,
+    componentSourcePath: "src/components/free/order-summary-card.tsx",
+    preview: <OrderSummaryCardExample />,
+  },
+  "product-card-grid": {
+    slug: "product-card-grid",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "products", type: "ProductItem[]", required: true, description: "Products to render." },
+      { name: "onAddToCart", type: "(product: ProductItem) => void", description: "Add-to-cart button handler." },
+      { name: "onSelect", type: "(product: ProductItem) => void", description: "Called when the product image/card is clicked." },
+    ],
+    states: ["Normal", "Out of stock", "No rating"],
+    accessibility: ["The product image is a real button, reachable and activatable via keyboard."],
+    customization: ["Omit `rating` per-product to hide the rating row for items without reviews yet."],
+    responsive: ["Grid reflows from 1 to 3 columns based on viewport width."],
+    source: productCardGridSource,
+    componentSource: productCardGridComponentSource,
+    componentSourcePath: "src/components/free/product-card-grid.tsx",
+    preview: <ProductCardGridExample />,
+  },
+  "coupon-code-input": {
+    slug: "coupon-code-input",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "appliedCode", type: "string", description: "Switches to the applied state showing this code." },
+      { name: "discountLabel", type: "string", description: "Badge text shown next to the applied code, e.g. \"-15%\"." },
+      { name: "error", type: "string", description: "Shown below the input when the code is invalid." },
+      { name: "isApplying", type: "boolean", default: "false", description: "Disables Apply and shows a spinner." },
+      { name: "onApply", type: "(code: string) => void", required: true, description: "Called when Apply is clicked." },
+      { name: "onRemove", type: "() => void", description: "Shown as a remove (×) button once a code is applied." },
+    ],
+    states: ["Empty", "Applying", "Applied", "Error"],
+    accessibility: ["The applied state uses both an icon and text to communicate success, not color alone."],
+    customization: ["Drive `appliedCode`/`error` from your own async validation call in `onApply`."],
+    responsive: ["Capped at `max-w-sm` by its container; input and button stay on one row."],
+    source: couponCodeInputSource,
+    componentSource: couponCodeInputComponentSource,
+    componentSourcePath: "src/components/free/coupon-code-input.tsx",
+    preview: <CouponCodeInputExample />,
+  },
+  "order-confirmation-card": {
+    slug: "order-confirmation-card",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "orderNumber", type: "string", required: true, description: "Order number/ID to display." },
+      { name: "estimatedDelivery", type: "string", description: "Pre-formatted delivery estimate, e.g. \"Aug 5 - Aug 7\"." },
+      { name: "email", type: "string", description: "Shown in the confirmation copy when provided." },
+      { name: "onTrackOrder", type: "() => void", description: "Shown as a primary button when provided." },
+      { name: "onContinueShopping", type: "() => void", description: "Shown as a secondary button when provided." },
+    ],
+    states: ["Normal", "With estimated delivery", "Without actions"],
+    accessibility: ["The success icon is decorative (`aria-hidden`); the heading and copy carry the meaning."],
+    customization: ["Omit `estimatedDelivery` for digital/instant orders that don't ship."],
+    responsive: ["Capped at `max-w-sm`; action buttons stack on narrow screens."],
+    source: orderConfirmationCardSource,
+    componentSource: orderConfirmationCardComponentSource,
+    componentSourcePath: "src/components/free/order-confirmation-card.tsx",
+    preview: <OrderConfirmationCardExample />,
+  },
+  "shopping-cart-drawer": {
+    slug: "shopping-cart-drawer",
+    preview: <ShoppingCartDrawer />,
+  },
+  "payment-method-selector": {
+    slug: "payment-method-selector",
+    preview: <PaymentMethodSelector />,
+  },
+  "shipping-address-form": {
+    slug: "shipping-address-form",
+    preview: <ShippingAddressForm />,
+  },
+  "order-tracking-timeline": {
+    slug: "order-tracking-timeline",
+    preview: <OrderTrackingTimeline />,
+  },
+  "checkout-stepper": {
+    slug: "checkout-stepper",
+    preview: <CheckoutStepper />,
+  },
+  "wishlist-item-list": {
+    slug: "wishlist-item-list",
+    preview: <WishlistItemList />,
+  },
+  "product-quick-view-modal": {
+    slug: "product-quick-view-modal",
+    preview: <ProductQuickViewModal />,
   },
 };
