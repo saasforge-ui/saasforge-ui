@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind v4 ignores .gitignore'd paths by default when scanning for classes to
+   generate. src/components/premium-preview/ is gitignored on purpose (it's synced
+   from the private saasforge-ui-pro repo at build time and never committed here),
+   so it has to be explicitly registered or its utility classes silently never
+   get generated in the production build. */
+@source "./components/premium-preview";
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

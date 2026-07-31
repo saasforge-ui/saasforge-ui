@@ -60,6 +60,9 @@ jobs:
           VITE_KOFI_ULTIMATE_URL: ${{ secrets.VITE_KOFI_ULTIMATE_URL }}
         run: npm run build
 
+      - name: SPA fallback for GitHub Pages (404 -> index.html)
+        run: cp dist/index.html dist/404.html
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
