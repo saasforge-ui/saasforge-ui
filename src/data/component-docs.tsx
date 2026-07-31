@@ -7,6 +7,7 @@ import EmptyStateExample from "@/examples/empty-state.example";
 import ConfirmationDialogExample from "@/examples/confirmation-dialog.example";
 import LoginFormExample from "@/examples/login-form.example";
 import FAQAccordionExample from "@/examples/faq-accordion.example";
+import SignupFormExample from "@/examples/signup-form.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -15,6 +16,7 @@ import emptyStateSource from "@/examples/empty-state.example.tsx?raw";
 import confirmationDialogSource from "@/examples/confirmation-dialog.example.tsx?raw";
 import loginFormSource from "@/examples/login-form.example.tsx?raw";
 import faqAccordionSource from "@/examples/faq-accordion.example.tsx?raw";
+import signupFormSource from "@/examples/signup-form.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -23,6 +25,7 @@ import emptyStateComponentSource from "@/components/free/empty-state.tsx?raw";
 import confirmationDialogComponentSource from "@/components/free/confirmation-dialog.tsx?raw";
 import loginFormComponentSource from "@/components/free/login-form.tsx?raw";
 import faqAccordionComponentSource from "@/components/free/faq-accordion-section.tsx?raw";
+import signupFormComponentSource from "@/components/free/signup-form.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -39,7 +42,6 @@ import { OrganizationSwitcher } from "@/components/premium-preview/organization-
 import { FilterToolbar } from "@/components/premium-preview/filter-toolbar";
 import { DataExportMenu } from "@/components/premium-preview/data-export-menu";
 import { SettingsForm } from "@/components/premium-preview/settings-form";
-import { SignupForm } from "@/components/premium-preview/signup-form";
 import { OnboardingWizard } from "@/components/premium-preview/onboarding-wizard";
 import { ResetPasswordFlow } from "@/components/premium-preview/reset-password-flow";
 import { FeatureGridSection } from "@/components/premium-preview/feature-grid";
@@ -288,7 +290,21 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   },
   "signup-form": {
     slug: "signup-form",
-    preview: <SignupForm />,
+    installDeps: ["react-hook-form", "zod", "@hookform/resolvers", "lucide-react"],
+    props: [
+      { name: "onSubmit", type: "(values: SignupFormValues) => void", required: true, description: "Called with validated values on submit." },
+      { name: "onLogIn", type: "() => void", description: "Shows an \"Already have an account?\" link when provided." },
+      { name: "isSubmitting", type: "boolean", default: "false", description: "Disables the submit button and shows a spinner." },
+      { name: "error", type: "string", description: "Shown as a banner above the fields when set." },
+    ],
+    states: ["Normal", "Validation errors", "Password mismatch", "Submitting", "Error banner"],
+    accessibility: ["Terms checkbox has its own `Label`; its validation error is rendered directly below it."],
+    customization: ["`signupFormSchema` (Zod) is exported — extend it if you need additional fields."],
+    responsive: ["Capped at `max-w-sm`; fields stack full-width on any viewport."],
+    source: signupFormSource,
+    componentSource: signupFormComponentSource,
+    componentSourcePath: "src/components/free/signup-form.tsx",
+    preview: <SignupFormExample />,
   },
   "onboarding-wizard": {
     slug: "onboarding-wizard",

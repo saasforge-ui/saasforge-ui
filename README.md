@@ -35,12 +35,13 @@ See the full list and live previews at `/components` in the demo app, or in
 - Confirmation Dialog System
 - Login Form
 - FAQ Accordion Section
+- Signup Form
 
-**Pro (SaaSForge UI Pro — 21 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 20 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
-Toolbar, Data Export Menu, SaaS Settings Form, Signup Form, Onboarding Wizard, Reset Password Flow, Feature Grid
-Section, CTA Banner Section, Goal Progress Card.
+Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
+Banner Section, Goal Progress Card.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
@@ -86,7 +87,7 @@ npm run test:run    # single run (used in CI)
 src/
   components/
     ui/               base primitives (button, card, dialog, ...)
-    free/             the 7 free, fully open-source components
+    free/             the 8 free, fully open-source components
     marketing/        landing page sections
     common/           shared layout, header/footer, code block, purchase button, etc.
   pages/           routed pages (Home, Pricing, Components/*, Showcase)
@@ -108,7 +109,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 (coming soon) |
-| Components | 7 | 28 | 28 |
+| Components | 8 | 28 | 28 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |

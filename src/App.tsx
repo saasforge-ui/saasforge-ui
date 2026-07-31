@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { SiteLayout } from "@/components/common/site-layout";
+import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import Pricing from "@/pages/Pricing";
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <TooltipProvider delayDuration={200}>
+      <ScrollToTop />
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<Home />} />

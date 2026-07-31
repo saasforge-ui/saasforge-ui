@@ -216,7 +216,7 @@ export const componentRegistry: ComponentProductMetadata[] = [
     name: "Signup Form",
     category: "Auth",
     description: "A signup form with password confirmation, terms acceptance and inline validation.",
-    isFree: false,
+    isFree: true,
     tags: ["auth", "signup", "forms"],
     difficulty: "beginner",
     useCases: ["App sign-up pages", "Waitlist-to-signup flows"],
