@@ -15,6 +15,7 @@ import OrderConfirmationCardExample from "@/examples/order-confirmation-card.exa
 import CommentThreadExample from "@/examples/comment-thread.example";
 import TypingIndicatorExample from "@/examples/typing-indicator.example";
 import AnnouncementBannerExample from "@/examples/announcement-banner.example";
+import ComparisonTableExample from "@/examples/comparison-table.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -31,6 +32,7 @@ import orderConfirmationCardSource from "@/examples/order-confirmation-card.exam
 import commentThreadSource from "@/examples/comment-thread.example.tsx?raw";
 import typingIndicatorSource from "@/examples/typing-indicator.example.tsx?raw";
 import announcementBannerSource from "@/examples/announcement-banner.example.tsx?raw";
+import comparisonTableSource from "@/examples/comparison-table.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -47,6 +49,7 @@ import orderConfirmationCardComponentSource from "@/components/free/order-confir
 import commentThreadComponentSource from "@/components/free/comment-thread.tsx?raw";
 import typingIndicatorComponentSource from "@/components/free/typing-indicator.tsx?raw";
 import announcementBannerComponentSource from "@/components/free/announcement-banner.tsx?raw";
+import comparisonTableComponentSource from "@/components/free/comparison-table.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -83,6 +86,15 @@ import { ChatChannelSidebar } from "@/components/premium-preview/chat-channel-si
 import { VideoCallCard } from "@/components/premium-preview/video-call-card";
 import { FeedbackWidget } from "@/components/premium-preview/feedback-widget";
 import { NotificationPreferencesPanel } from "@/components/premium-preview/notification-preferences-panel";
+import { KanbanBoard } from "@/components/premium-preview/kanban-board";
+import { CalendarEventView } from "@/components/premium-preview/calendar-event-view";
+import { DataGridInlineEdit } from "@/components/premium-preview/data-grid-inline-edit";
+import { TreeViewFileExplorer } from "@/components/premium-preview/tree-view-file-explorer";
+import { GanttChartRow } from "@/components/premium-preview/gantt-chart-row";
+import { HeatmapCalendar } from "@/components/premium-preview/heatmap-calendar";
+import { PivotSummaryTable } from "@/components/premium-preview/pivot-summary-table";
+import { VirtualizedLongList } from "@/components/premium-preview/virtualized-long-list";
+import { TimelineChart } from "@/components/premium-preview/timeline-chart";
 
 export interface PropRow {
   name: string;
@@ -566,5 +578,57 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "notification-preferences-panel": {
     slug: "notification-preferences-panel",
     preview: <NotificationPreferencesPanel />,
+  },
+  "comparison-table": {
+    slug: "comparison-table",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "columns", type: "ComparisonColumn[]", required: true, description: "Columns to compare, e.g. your product vs. a competitor." },
+      { name: "rows", type: "ComparisonRow[]", required: true, description: "One row per feature; `values` is keyed by column id." },
+    ],
+    states: ["Boolean cells (check/cross)", "Text cells", "Highlighted column"],
+    accessibility: ["Check/cross icons carry `aria-label`s (\"Included\"/\"Not included\") — never rely on the icon shape alone."],
+    customization: ["A cell value can be `true`/`false` (icon) or a string (shown as text) — mix both per row as needed."],
+    responsive: ["Table scrolls horizontally on narrow screens rather than compressing columns unreadably."],
+    source: comparisonTableSource,
+    componentSource: comparisonTableComponentSource,
+    componentSourcePath: "src/components/free/comparison-table.tsx",
+    preview: <ComparisonTableExample />,
+  },
+  "kanban-board": {
+    slug: "kanban-board",
+    preview: <KanbanBoard />,
+  },
+  "calendar-event-view": {
+    slug: "calendar-event-view",
+    preview: <CalendarEventView />,
+  },
+  "data-grid-inline-edit": {
+    slug: "data-grid-inline-edit",
+    preview: <DataGridInlineEdit />,
+  },
+  "tree-view-file-explorer": {
+    slug: "tree-view-file-explorer",
+    preview: <TreeViewFileExplorer />,
+  },
+  "gantt-chart-row": {
+    slug: "gantt-chart-row",
+    preview: <GanttChartRow />,
+  },
+  "heatmap-calendar": {
+    slug: "heatmap-calendar",
+    preview: <HeatmapCalendar />,
+  },
+  "pivot-summary-table": {
+    slug: "pivot-summary-table",
+    preview: <PivotSummaryTable />,
+  },
+  "virtualized-long-list": {
+    slug: "virtualized-long-list",
+    preview: <VirtualizedLongList />,
+  },
+  "timeline-chart": {
+    slug: "timeline-chart",
+    preview: <TimelineChart />,
   },
 };

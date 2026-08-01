@@ -194,3 +194,46 @@ export interface CommentItem {
   timestamp: string;
   replies?: CommentItem[];
 }
+
+export interface KanbanCard {
+  id: string;
+  title: string;
+  description?: string;
+  labels?: string[];
+}
+
+export interface KanbanColumn {
+  id: string;
+  title: string;
+  cards: KanbanCard[];
+}
+
+export interface CalendarEvent {
+  date: string;
+  title: string;
+}
+
+export interface TreeNode {
+  id: string;
+  name: string;
+  type: "folder" | "file";
+  children?: TreeNode[];
+}
+
+export interface GanttTask {
+  id: string;
+  name: string;
+  start: string;
+  end: string;
+}
+
+export interface HeatmapDataPoint {
+  date: string;
+  value: number;
+}
+
+export interface TimelineEvent {
+  id: string;
+  label: string;
+  date: string;
+}
