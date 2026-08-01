@@ -12,6 +12,9 @@ import OrderSummaryCardExample from "@/examples/order-summary-card.example";
 import ProductCardGridExample from "@/examples/product-card-grid.example";
 import CouponCodeInputExample from "@/examples/coupon-code-input.example";
 import OrderConfirmationCardExample from "@/examples/order-confirmation-card.example";
+import CommentThreadExample from "@/examples/comment-thread.example";
+import TypingIndicatorExample from "@/examples/typing-indicator.example";
+import AnnouncementBannerExample from "@/examples/announcement-banner.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -25,6 +28,9 @@ import orderSummaryCardSource from "@/examples/order-summary-card.example.tsx?ra
 import productCardGridSource from "@/examples/product-card-grid.example.tsx?raw";
 import couponCodeInputSource from "@/examples/coupon-code-input.example.tsx?raw";
 import orderConfirmationCardSource from "@/examples/order-confirmation-card.example.tsx?raw";
+import commentThreadSource from "@/examples/comment-thread.example.tsx?raw";
+import typingIndicatorSource from "@/examples/typing-indicator.example.tsx?raw";
+import announcementBannerSource from "@/examples/announcement-banner.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -38,6 +44,9 @@ import orderSummaryCardComponentSource from "@/components/free/order-summary-car
 import productCardGridComponentSource from "@/components/free/product-card-grid.tsx?raw";
 import couponCodeInputComponentSource from "@/components/free/coupon-code-input.tsx?raw";
 import orderConfirmationCardComponentSource from "@/components/free/order-confirmation-card.tsx?raw";
+import commentThreadComponentSource from "@/components/free/comment-thread.tsx?raw";
+import typingIndicatorComponentSource from "@/components/free/typing-indicator.tsx?raw";
+import announcementBannerComponentSource from "@/components/free/announcement-banner.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -66,6 +75,14 @@ import { OrderTrackingTimeline } from "@/components/premium-preview/order-tracki
 import { CheckoutStepper } from "@/components/premium-preview/checkout-stepper";
 import { WishlistItemList } from "@/components/premium-preview/wishlist-item-list";
 import { ProductQuickViewModal } from "@/components/premium-preview/product-quick-view-modal";
+import { ChatWidget } from "@/components/premium-preview/chat-widget";
+import { MessageBubbleList } from "@/components/premium-preview/message-bubble-list";
+import { SupportInboxList } from "@/components/premium-preview/support-inbox-list";
+import { MentionAutocompleteInput } from "@/components/premium-preview/mention-autocomplete-input";
+import { ChatChannelSidebar } from "@/components/premium-preview/chat-channel-sidebar";
+import { VideoCallCard } from "@/components/premium-preview/video-call-card";
+import { FeedbackWidget } from "@/components/premium-preview/feedback-widget";
+import { NotificationPreferencesPanel } from "@/components/premium-preview/notification-preferences-panel";
 
 export interface PropRow {
   name: string;
@@ -466,5 +483,88 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "product-quick-view-modal": {
     slug: "product-quick-view-modal",
     preview: <ProductQuickViewModal />,
+  },
+  "comment-thread": {
+    slug: "comment-thread",
+    installDeps: [],
+    props: [
+      { name: "comments", type: "CommentItem[]", required: true, description: "Top-level comments; each may include nested `replies`." },
+      { name: "onReply", type: "(parentId: string, content: string) => void", description: "Shown as a Reply link/composer per comment when provided." },
+      { name: "onSubmit", type: "(content: string) => void", description: "Shows a top-level composer at the bottom when provided." },
+    ],
+    states: ["Normal", "Replying", "With nested replies"],
+    accessibility: ["Each comment's Reply control is a real button; the reply composer appears inline, not in a separate modal."],
+    customization: ["Replies nest one level visually via a left border indent — extend `CommentItem.replies` recursively for deeper threads."],
+    responsive: ["Capped at `max-w-lg`; reply indent is fixed so deep threads still stay readable on mobile."],
+    source: commentThreadSource,
+    componentSource: commentThreadComponentSource,
+    componentSourcePath: "src/components/free/comment-thread.tsx",
+    preview: <CommentThreadExample />,
+  },
+  "typing-indicator": {
+    slug: "typing-indicator",
+    installDeps: [],
+    props: [
+      { name: "users", type: "string[]", required: true, description: "Names of users currently typing; renders nothing when empty." },
+    ],
+    states: ["One user typing", "Two users typing", "Three or more (\"and N others\")", "Hidden (empty array)"],
+    accessibility: ["Uses `role=\"status\"` so assistive tech announces when someone starts typing."],
+    customization: ["Swap the animated dots for your own spinner by restyling the dot span — the label logic is independent."],
+    responsive: ["Inline element; sizes naturally with its container."],
+    source: typingIndicatorSource,
+    componentSource: typingIndicatorComponentSource,
+    componentSourcePath: "src/components/free/typing-indicator.tsx",
+    preview: <TypingIndicatorExample />,
+  },
+  "announcement-banner": {
+    slug: "announcement-banner",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "message", type: "string", required: true, description: "Announcement text." },
+      { name: "variant", type: '"info" | "success" | "warning"', default: '"info"', description: "Visual style and icon." },
+      { name: "ctaLabel", type: "string", description: "Shown as an underlined link when paired with `onCtaClick`." },
+      { name: "onCtaClick", type: "() => void", description: "CTA click handler." },
+      { name: "onDismiss", type: "() => void", description: "Shows a close (×) button when provided." },
+    ],
+    states: ["Info", "Success", "Warning", "With CTA", "Dismissible"],
+    accessibility: ["The dismiss button has an explicit `aria-label` (\"Dismiss announcement\")."],
+    customization: ["Render conditionally from your own dismissed-state (e.g. localStorage) — the component itself is stateless."],
+    responsive: ["Full-width by default; message truncation is left to the parent container."],
+    source: announcementBannerSource,
+    componentSource: announcementBannerComponentSource,
+    componentSourcePath: "src/components/free/announcement-banner.tsx",
+    preview: <AnnouncementBannerExample />,
+  },
+  "chat-widget": {
+    slug: "chat-widget",
+    preview: <ChatWidget />,
+  },
+  "message-bubble-list": {
+    slug: "message-bubble-list",
+    preview: <MessageBubbleList />,
+  },
+  "support-inbox-list": {
+    slug: "support-inbox-list",
+    preview: <SupportInboxList />,
+  },
+  "mention-autocomplete-input": {
+    slug: "mention-autocomplete-input",
+    preview: <MentionAutocompleteInput />,
+  },
+  "chat-channel-sidebar": {
+    slug: "chat-channel-sidebar",
+    preview: <ChatChannelSidebar />,
+  },
+  "video-call-card": {
+    slug: "video-call-card",
+    preview: <VideoCallCard />,
+  },
+  "feedback-widget": {
+    slug: "feedback-widget",
+    preview: <FeedbackWidget />,
+  },
+  "notification-preferences-panel": {
+    slug: "notification-preferences-panel",
+    preview: <NotificationPreferencesPanel />,
   },
 };

@@ -20,8 +20,8 @@ _Add screenshots/GIFs here — `/showcase/:slug` renders any component chrome-fr
 
 ## Components
 
-39 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing and Ecommerce —
-and growing. See the full list and live previews at `/components` in the demo app, or in
+50 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce and
+Communication — and growing. See the full list and live previews at `/components` in the demo app, or in
 [`src/data/components.ts`](src/data/components.ts).
 
 ### Free vs Pro
@@ -40,13 +40,18 @@ and growing. See the full list and live previews at `/components` in the demo ap
 - Product Card Grid
 - Coupon Code Input
 - Order Confirmation Card
+- Comment Thread
+- Typing Indicator
+- Announcement Banner
 
-**Pro (SaaSForge UI Pro — 27 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 35 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
 Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
 Banner Section, Goal Progress Card, Shopping Cart Drawer, Payment Method Selector, Shipping Address Form, Order
-Tracking Timeline, Checkout Stepper, Wishlist Item List, Product Quick View Modal.
+Tracking Timeline, Checkout Stepper, Wishlist Item List, Product Quick View Modal, Chat Widget, Message Bubble
+List, Support Inbox List, Mention Autocomplete Input, Chat Channel Sidebar, Video Call Card, Feedback Widget,
+Notification Preferences Panel.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
@@ -92,7 +97,7 @@ npm run test:run    # single run (used in CI)
 src/
   components/
     ui/               base primitives (button, card, dialog, ...)
-    free/             the 12 free, fully open-source components
+    free/             the 15 free, fully open-source components
     marketing/        landing page sections
     common/           shared layout, header/footer, code block, purchase button, etc.
   pages/           routed pages (Home, Pricing, Components/*, Showcase)
@@ -114,7 +119,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 (coming soon) |
-| Components | 12 | 39 | 39 |
+| Components | 15 | 50 | 50 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |

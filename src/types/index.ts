@@ -160,3 +160,37 @@ export interface ProductItem {
 }
 
 export type OrderStatus = "placed" | "processing" | "shipped" | "out_for_delivery" | "delivered";
+
+export interface ChatMessage {
+  id: string;
+  senderId: string;
+  senderName: string;
+  avatarUrl?: string;
+  content: string;
+  timestamp: string;
+}
+
+export interface ChatChannel {
+  id: string;
+  name: string;
+  unreadCount?: number;
+  isPrivate?: boolean;
+}
+
+export interface SupportConversation {
+  id: string;
+  customerName: string;
+  avatarUrl?: string;
+  lastMessage: string;
+  timestamp: string;
+  unreadCount?: number;
+  status: "open" | "pending" | "closed";
+}
+
+export interface CommentItem {
+  id: string;
+  author: { name: string; avatarUrl?: string };
+  content: string;
+  timestamp: string;
+  replies?: CommentItem[];
+}
