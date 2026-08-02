@@ -7,7 +7,7 @@ export function ComponentsSidebar() {
     <nav aria-label="Component categories" className="space-y-6">
       {categories.map((category) => (
         <div key={category}>
-          <h3 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          <h3 className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-foreground">
             {category}
           </h3>
           <ul className="space-y-0.5">

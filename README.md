@@ -20,9 +20,9 @@ _Add screenshots/GIFs here — `/showcase/:slug` renders any component chrome-fr
 
 ## Components
 
-60 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
-Communication and Data — and growing. See the full list and live previews at `/components` in the demo app, or in
-[`src/data/components.ts`](src/data/components.ts).
+70 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
+Communication, Data and Navigation — and growing. See the full list and live previews at `/components` in the
+demo app, or in [`src/data/components.ts`](src/data/components.ts).
 
 ### Free vs Pro
 
@@ -44,8 +44,12 @@ Communication and Data — and growing. See the full list and live previews at `
 - Typing Indicator
 - Announcement Banner
 - Comparison Table
+- Breadcrumbs
+- Stepper / Wizard Nav
+- Tab Bar with Overflow
+- Pagination Bar
 
-**Pro (SaaSForge UI Pro — 44 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 50 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
 Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
@@ -53,7 +57,8 @@ Banner Section, Goal Progress Card, Shopping Cart Drawer, Payment Method Selecto
 Tracking Timeline, Checkout Stepper, Wishlist Item List, Product Quick View Modal, Chat Widget, Message Bubble
 List, Support Inbox List, Mention Autocomplete Input, Chat Channel Sidebar, Video Call Card, Feedback Widget,
 Notification Preferences Panel, Kanban Board, Calendar Event View, Data Grid with Inline Edit, Tree View / File
-Explorer, Gantt Chart Row, Heatmap Calendar, Pivot-style Summary Table, Virtualized Long List, Timeline Chart.
+Explorer, Gantt Chart Row, Heatmap Calendar, Pivot-style Summary Table, Virtualized Long List, Timeline Chart,
+Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane Layout, Sticky Table of Contents.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
@@ -99,7 +104,7 @@ npm run test:run    # single run (used in CI)
 src/
   components/
     ui/               base primitives (button, card, dialog, ...)
-    free/             the 16 free, fully open-source components
+    free/             the 20 free, fully open-source components
     marketing/        landing page sections
     common/           shared layout, header/footer, code block, purchase button, etc.
   pages/           routed pages (Home, Pricing, Components/*, Showcase)
@@ -121,7 +126,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 (coming soon) |
-| Components | 16 | 60 | 60 |
+| Components | 20 | 70 | 70 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |

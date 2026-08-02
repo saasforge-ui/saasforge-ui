@@ -16,6 +16,10 @@ import CommentThreadExample from "@/examples/comment-thread.example";
 import TypingIndicatorExample from "@/examples/typing-indicator.example";
 import AnnouncementBannerExample from "@/examples/announcement-banner.example";
 import ComparisonTableExample from "@/examples/comparison-table.example";
+import BreadcrumbsExample from "@/examples/breadcrumbs.example";
+import StepperWizardNavExample from "@/examples/stepper-wizard-nav.example";
+import TabBarOverflowExample from "@/examples/tab-bar-overflow.example";
+import PaginationBarExample from "@/examples/pagination-bar.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -33,6 +37,10 @@ import commentThreadSource from "@/examples/comment-thread.example.tsx?raw";
 import typingIndicatorSource from "@/examples/typing-indicator.example.tsx?raw";
 import announcementBannerSource from "@/examples/announcement-banner.example.tsx?raw";
 import comparisonTableSource from "@/examples/comparison-table.example.tsx?raw";
+import breadcrumbsSource from "@/examples/breadcrumbs.example.tsx?raw";
+import stepperWizardNavSource from "@/examples/stepper-wizard-nav.example.tsx?raw";
+import tabBarOverflowSource from "@/examples/tab-bar-overflow.example.tsx?raw";
+import paginationBarSource from "@/examples/pagination-bar.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -50,6 +58,10 @@ import commentThreadComponentSource from "@/components/free/comment-thread.tsx?r
 import typingIndicatorComponentSource from "@/components/free/typing-indicator.tsx?raw";
 import announcementBannerComponentSource from "@/components/free/announcement-banner.tsx?raw";
 import comparisonTableComponentSource from "@/components/free/comparison-table.tsx?raw";
+import breadcrumbsComponentSource from "@/components/free/breadcrumbs.tsx?raw";
+import stepperWizardNavComponentSource from "@/components/free/stepper-wizard-nav.tsx?raw";
+import tabBarOverflowComponentSource from "@/components/free/tab-bar-overflow.tsx?raw";
+import paginationBarComponentSource from "@/components/free/pagination-bar.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -95,6 +107,12 @@ import { HeatmapCalendar } from "@/components/premium-preview/heatmap-calendar";
 import { PivotSummaryTable } from "@/components/premium-preview/pivot-summary-table";
 import { VirtualizedLongList } from "@/components/premium-preview/virtualized-long-list";
 import { TimelineChart } from "@/components/premium-preview/timeline-chart";
+import { CommandPalette } from "@/components/premium-preview/command-palette";
+import { VerticalNavSidebar } from "@/components/premium-preview/vertical-nav-sidebar";
+import { MegaMenu } from "@/components/premium-preview/mega-menu";
+import { MobileBottomNav } from "@/components/premium-preview/mobile-bottom-nav";
+import { SplitPaneLayout } from "@/components/premium-preview/split-pane-layout";
+import { StickyTableOfContents } from "@/components/premium-preview/sticky-table-of-contents";
 
 export interface PropRow {
   name: string;
@@ -630,5 +648,97 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "timeline-chart": {
     slug: "timeline-chart",
     preview: <TimelineChart />,
+  },
+  "breadcrumbs": {
+    slug: "breadcrumbs",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "items", type: "BreadcrumbItem[]", required: true, description: "Trail items; the last one renders as the current, non-linked page." },
+      { name: "onNavigate", type: "(href: string) => void", description: "Called when a linked (non-last) item is clicked." },
+    ],
+    states: ["Normal", "Single item", "Long labels"],
+    accessibility: ["Uses `aria-current=\"page\"` on the last item and a `nav[aria-label=\"Breadcrumb\"]` landmark."],
+    customization: ["Items without an `href` render as plain (non-clickable) text, even mid-trail."],
+    responsive: ["Inline-flex; wrap the trail in a scrollable container for very deep hierarchies on mobile."],
+    source: breadcrumbsSource,
+    componentSource: breadcrumbsComponentSource,
+    componentSourcePath: "src/components/free/breadcrumbs.tsx",
+    preview: <BreadcrumbsExample />,
+  },
+  "stepper-wizard-nav": {
+    slug: "stepper-wizard-nav",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "steps", type: "StepperStep[]", required: true, description: "Steps to render." },
+      { name: "currentStep", type: "number", required: true, description: "Index of the active step." },
+      { name: "onStepClick", type: "(index: number) => void", description: "Enables clicking back to already-completed steps." },
+    ],
+    states: ["First step", "Middle step", "Last step", "Clickable completed steps"],
+    accessibility: ["Rendered as an ordered list with `aria-label=\"Progress\"` on the root."],
+    customization: ["This is a display-only nav — pair it with your own step-content container."],
+    responsive: ["Step labels are always visible — hide them below a breakpoint via `className` overrides if space is tight."],
+    source: stepperWizardNavSource,
+    componentSource: stepperWizardNavComponentSource,
+    componentSourcePath: "src/components/free/stepper-wizard-nav.tsx",
+    preview: <StepperWizardNavExample />,
+  },
+  "tab-bar-overflow": {
+    slug: "tab-bar-overflow",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "tabs", type: "TabBarItem[]", required: true, description: "All tabs, visible and overflow." },
+      { name: "activeTabId", type: "string", required: true, description: "Currently selected tab." },
+      { name: "onTabChange", type: "(id: string) => void", required: true, description: "Called when a visible or overflow tab is selected." },
+      { name: "maxVisible", type: "number", default: "4", description: "How many tabs show inline before overflowing." },
+    ],
+    states: ["Normal", "Active tab in overflow", "No overflow (fits maxVisible)"],
+    accessibility: ["Uses `role=\"tablist\"`/`role=\"tab\"` with `aria-selected` on visible tabs."],
+    customization: ["Overflow menu is built on the shared Radix dropdown menu used throughout the library."],
+    responsive: ["`maxVisible` is a fixed number, not width-based — tune it per breakpoint via your own responsive prop if needed."],
+    source: tabBarOverflowSource,
+    componentSource: tabBarOverflowComponentSource,
+    componentSourcePath: "src/components/free/tab-bar-overflow.tsx",
+    preview: <TabBarOverflowExample />,
+  },
+  "pagination-bar": {
+    slug: "pagination-bar",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "currentPage", type: "number", required: true, description: "Current page (1-indexed)." },
+      { name: "totalPages", type: "number", required: true, description: "Total number of pages." },
+      { name: "onPageChange", type: "(page: number) => void", required: true, description: "Called with the new page number." },
+    ],
+    states: ["Few pages (no ellipsis)", "Many pages (with ellipsis)", "First page", "Last page"],
+    accessibility: ["The current page button has `aria-current=\"page\"`; prev/next have descriptive `aria-label`s."],
+    customization: ["Ellipsis placement is computed automatically — always shows first, last, and pages around the current one."],
+    responsive: ["Buttons are fixed-size (`h-8 w-8`) so the bar stays compact even with many page numbers."],
+    source: paginationBarSource,
+    componentSource: paginationBarComponentSource,
+    componentSourcePath: "src/components/free/pagination-bar.tsx",
+    preview: <PaginationBarExample />,
+  },
+  "command-palette": {
+    slug: "command-palette",
+    preview: <CommandPalette />,
+  },
+  "vertical-nav-sidebar": {
+    slug: "vertical-nav-sidebar",
+    preview: <VerticalNavSidebar />,
+  },
+  "mega-menu": {
+    slug: "mega-menu",
+    preview: <MegaMenu />,
+  },
+  "mobile-bottom-nav": {
+    slug: "mobile-bottom-nav",
+    preview: <MobileBottomNav />,
+  },
+  "split-pane-layout": {
+    slug: "split-pane-layout",
+    preview: <SplitPaneLayout />,
+  },
+  "sticky-table-of-contents": {
+    slug: "sticky-table-of-contents",
+    preview: <StickyTableOfContents />,
   },
 };
