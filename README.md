@@ -7,10 +7,6 @@ Production-ready React components for modern SaaS dashboards.
 > Stop rebuilding the same SaaS dashboard UI. Production-ready React components — and growing — built with React,
 > TypeScript and Tailwind CSS. Copy, customize, ship.
 
-## Screenshots
-
-_Add screenshots/GIFs here — `/showcase/:slug` renders any component chrome-free, suitable for README/social use._
-
 ## Why SaaSForge UI?
 
 - **Copy & Customize** — no black-box components; take the source and make it yours.
