@@ -4,7 +4,12 @@ import { PurchaseButton } from "@/components/common/purchase-button";
 import { Badge } from "@/components/ui/badge";
 import { componentRegistry } from "@/data/components";
 
+const PREVIEW_COUNT = 12;
+
 export function PremiumComponentsSection() {
+  const preview = componentRegistry.slice(0, PREVIEW_COUNT);
+  const remaining = componentRegistry.length - preview.length;
+
   return (
     <section className="border-t border-border bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -19,7 +24,7 @@ export function PremiumComponentsSection() {
         </div>
 
         <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {componentRegistry.map((component) => (
+          {preview.map((component) => (
             <Link
               key={component.slug}
               to={`/components/${component.slug}`}
@@ -40,6 +45,15 @@ export function PremiumComponentsSection() {
               <span className="text-xs text-muted-foreground">{component.category}</span>
             </Link>
           ))}
+          {remaining > 0 && (
+            <Link
+              to="/components"
+              className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-border p-4 text-center transition-colors hover:border-primary/40 hover:bg-accent/50"
+            >
+              <span className="text-sm font-medium">+{remaining} more</span>
+              <span className="text-xs text-muted-foreground">View full catalog</span>
+            </Link>
+          )}
         </div>
 
         <div className="mt-10 text-center">
