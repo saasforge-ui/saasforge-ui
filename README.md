@@ -16,9 +16,9 @@ Production-ready React components for modern SaaS dashboards.
 
 ## Components
 
-70 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
-Communication, Data and Navigation — and growing. See the full list and live previews at `/components` in the
-demo app, or in [`src/data/components.ts`](src/data/components.ts).
+78 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
+Communication, Data, Navigation, Forms and Notifications — and growing. See the full list and live previews at
+`/components` in the demo app, or in [`src/data/components.ts`](src/data/components.ts).
 
 ### Free vs Pro
 
@@ -44,8 +44,10 @@ demo app, or in [`src/data/components.ts`](src/data/components.ts).
 - Stepper / Wizard Nav
 - Tab Bar with Overflow
 - Pagination Bar
+- File Upload Dropzone
+- Toast Notification Stack
 
-**Pro (SaaSForge UI Pro — 50 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 58 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
 Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
@@ -54,7 +56,9 @@ Tracking Timeline, Checkout Stepper, Wishlist Item List, Product Quick View Moda
 List, Support Inbox List, Mention Autocomplete Input, Chat Channel Sidebar, Video Call Card, Feedback Widget,
 Notification Preferences Panel, Kanban Board, Calendar Event View, Data Grid with Inline Edit, Tree View / File
 Explorer, Gantt Chart Row, Heatmap Calendar, Pivot-style Summary Table, Virtualized Long List, Timeline Chart,
-Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane Layout, Sticky Table of Contents.
+Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane Layout, Sticky Table of Contents,
+Validated Form Wizard, Dynamic Field Array Form, Inline Editable Table Row, Notification Bell Dropdown, Alert
+Banner, Undo Snackbar.
 
 Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
 `/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
@@ -122,7 +126,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 (coming soon) |
-| Components | 20 | 70 | 70 |
+| Components | 20 | 78 | 78 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |

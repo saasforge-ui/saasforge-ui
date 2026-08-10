@@ -10,7 +10,9 @@ export type ComponentCategory =
   | "Ecommerce"
   | "Communication"
   | "Data"
-  | "Navigation";
+  | "Navigation"
+  | "Forms"
+  | "Notifications";
 
 export interface ComponentProductMetadata {
   slug: string;

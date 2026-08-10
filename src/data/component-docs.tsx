@@ -20,6 +20,8 @@ import BreadcrumbsExample from "@/examples/breadcrumbs.example";
 import StepperWizardNavExample from "@/examples/stepper-wizard-nav.example";
 import TabBarOverflowExample from "@/examples/tab-bar-overflow.example";
 import PaginationBarExample from "@/examples/pagination-bar.example";
+import FileUploadDropzoneExample from "@/examples/file-upload-dropzone.example";
+import ToastNotificationStackExample from "@/examples/toast-notification-stack.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -41,6 +43,8 @@ import breadcrumbsSource from "@/examples/breadcrumbs.example.tsx?raw";
 import stepperWizardNavSource from "@/examples/stepper-wizard-nav.example.tsx?raw";
 import tabBarOverflowSource from "@/examples/tab-bar-overflow.example.tsx?raw";
 import paginationBarSource from "@/examples/pagination-bar.example.tsx?raw";
+import fileUploadDropzoneSource from "@/examples/file-upload-dropzone.example.tsx?raw";
+import toastNotificationStackSource from "@/examples/toast-notification-stack.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -62,6 +66,8 @@ import breadcrumbsComponentSource from "@/components/free/breadcrumbs.tsx?raw";
 import stepperWizardNavComponentSource from "@/components/free/stepper-wizard-nav.tsx?raw";
 import tabBarOverflowComponentSource from "@/components/free/tab-bar-overflow.tsx?raw";
 import paginationBarComponentSource from "@/components/free/pagination-bar.tsx?raw";
+import fileUploadDropzoneComponentSource from "@/components/free/file-upload-dropzone.tsx?raw";
+import toastNotificationStackComponentSource from "@/components/free/toast-notification-stack.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -113,6 +119,12 @@ import { MegaMenu } from "@/components/premium-preview/mega-menu";
 import { MobileBottomNav } from "@/components/premium-preview/mobile-bottom-nav";
 import { SplitPaneLayout } from "@/components/premium-preview/split-pane-layout";
 import { StickyTableOfContents } from "@/components/premium-preview/sticky-table-of-contents";
+import { ValidatedFormWizard } from "@/components/premium-preview/validated-form-wizard";
+import { DynamicFieldArrayForm } from "@/components/premium-preview/dynamic-field-array-form";
+import { InlineEditableTableRow } from "@/components/premium-preview/inline-editable-table-row";
+import { NotificationBellDropdown } from "@/components/premium-preview/notification-bell-dropdown";
+import { AlertBannerAutoDismiss } from "@/components/premium-preview/alert-banner-auto-dismiss";
+import { UndoSnackbar } from "@/components/premium-preview/undo-snackbar";
 
 export interface PropRow {
   name: string;
@@ -740,5 +752,60 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "sticky-table-of-contents": {
     slug: "sticky-table-of-contents",
     preview: <StickyTableOfContents />,
+  },
+  "file-upload-dropzone": {
+    slug: "file-upload-dropzone",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "accept", type: "string", description: "MIME/extension filter passed to the hidden file input." },
+      { name: "maxSizeMB", type: "number", default: "5", description: "Maximum file size in megabytes before a file is rejected." },
+      { name: "multiple", type: "boolean", default: "true", description: "Whether more than one file can be selected/dropped." },
+      { name: "onFilesChange", type: "(files: UploadedFile[]) => void", description: "Called whenever the file list changes." },
+    ],
+    states: ["Empty", "Drag over", "Uploading (simulated progress)", "Done", "Error (over size limit)"],
+    accessibility: ["The dropzone is a keyboard-focusable `role=\"button\"` that also opens the file picker on Enter/Space."],
+    customization: ["Image files get a real thumbnail via `URL.createObjectURL`; other types fall back to a generic file icon."],
+    responsive: ["File rows wrap naturally in a vertical list; the dropzone itself is full-width by default."],
+    source: fileUploadDropzoneSource,
+    componentSource: fileUploadDropzoneComponentSource,
+    componentSourcePath: "src/components/free/file-upload-dropzone.tsx",
+    preview: <FileUploadDropzoneExample />,
+  },
+  "toast-notification-stack": {
+    slug: "toast-notification-stack",
+    installDeps: ["lucide-react"],
+    props: [],
+    states: ["Empty", "Single toast", "Stacked toasts", "Success / error / warning / info variants"],
+    accessibility: ["Each toast uses `role=\"status\"` and includes a manual close button in addition to auto-dismiss."],
+    customization: ["Toasts auto-dismiss after 4s; adjust `TOAST_DURATION_MS` to change the timing."],
+    responsive: ["Fixed to the top-right corner (`fixed top-4 right-4`); switch to `bottom-4` or full-width on mobile as needed."],
+    source: toastNotificationStackSource,
+    componentSource: toastNotificationStackComponentSource,
+    componentSourcePath: "src/components/free/toast-notification-stack.tsx",
+    preview: <ToastNotificationStackExample />,
+  },
+  "validated-form-wizard": {
+    slug: "validated-form-wizard",
+    preview: <ValidatedFormWizard />,
+  },
+  "dynamic-field-array-form": {
+    slug: "dynamic-field-array-form",
+    preview: <DynamicFieldArrayForm />,
+  },
+  "inline-editable-table-row": {
+    slug: "inline-editable-table-row",
+    preview: <InlineEditableTableRow />,
+  },
+  "notification-bell-dropdown": {
+    slug: "notification-bell-dropdown",
+    preview: <NotificationBellDropdown />,
+  },
+  "alert-banner-auto-dismiss": {
+    slug: "alert-banner-auto-dismiss",
+    preview: <AlertBannerAutoDismiss />,
+  },
+  "undo-snackbar": {
+    slug: "undo-snackbar",
+    preview: <UndoSnackbar />,
   },
 };
