@@ -5,7 +5,7 @@ import { templateRegistry } from "@/data/templates";
 
 export default function TemplatesIndex() {
   return (
-    <div className="space-y-12">
+    <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 sm:px-6 lg:px-8">
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Dashboard Templates</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
