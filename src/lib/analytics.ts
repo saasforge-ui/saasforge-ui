@@ -14,6 +14,12 @@ export interface AnalyticsPayload {
   [key: string]: string | number | boolean | undefined;
 }
 
+declare global {
+  interface Window {
+    umami?: { track: (event: string, data?: Record<string, unknown>) => void };
+  }
+}
+
 /**
  * Thin abstraction so a real provider (Plausible, PostHog, GA) can be wired in
  * later without touching call sites.
@@ -23,4 +29,5 @@ export function trackEvent(event: AnalyticsEvent, payload: AnalyticsPayload = {}
     console.debug(`[analytics] ${event}`, payload);
   }
   window.dispatchEvent(new CustomEvent("saasforge:analytics", { detail: { event, payload } }));
+  window.umami?.track(event, payload);
 }

@@ -58,6 +58,7 @@ jobs:
           VITE_GITHUB_URL: https://github.com/${{ github.repository }}
           VITE_KOFI_PRODUCT_URL: ${{ secrets.VITE_KOFI_PRODUCT_URL }}
           VITE_KOFI_ULTIMATE_URL: ${{ secrets.VITE_KOFI_ULTIMATE_URL }}
+          VITE_UMAMI_WEBSITE_ID: ${{ vars.VITE_UMAMI_WEBSITE_ID }}
         run: npm run build
 
       - name: SPA fallback for GitHub Pages (404 -> index.html)
