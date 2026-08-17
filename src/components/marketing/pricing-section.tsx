@@ -59,7 +59,7 @@ export function PricingSection() {
                 <PurchaseButton
                   className="w-full"
                   variant={tier.highlighted ? "default" : "outline"}
-                  product="saasforge-ui-pro"
+                  product={tier.id === "ultimate" ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}
                 >
                   {tier.cta}
                 </PurchaseButton>
