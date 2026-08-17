@@ -28,6 +28,13 @@ export default function ComponentsIndex() {
                         <CardTitle className="text-base">{component.name}</CardTitle>
                         {component.isFree ? (
                           <Badge variant="success">FREE</Badge>
+                        ) : component.ultimateOnly ? (
+                          <Badge
+                            variant="secondary"
+                            className="border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400"
+                          >
+                            ULTIMATE
+                          </Badge>
                         ) : (
                           <Badge variant="secondary">PRO</Badge>
                         )}

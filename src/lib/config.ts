@@ -1,4 +1,5 @@
 import { componentRegistry, freeComponents } from "@/data/components";
+import { templateRegistry } from "@/data/templates";
 
 export const siteConfig = {
   name: "SaaSForge UI",
@@ -62,9 +63,8 @@ export const pricingConfig = {
       comingSoon: false,
       features: [
         "Everything in Pro",
-        "Analytics Dashboard template",
-        "Billing & Settings Panel template",
-        "Admin & Users Panel template",
+        `${templateRegistry.length} complete dashboard templates`,
+        `${componentRegistry.filter((c) => c.ultimateOnly).length} Ultimate-exclusive components`,
         "Priority updates",
         "Commercial usage",
       ],

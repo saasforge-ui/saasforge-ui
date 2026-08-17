@@ -125,6 +125,11 @@ import { InlineEditableTableRow } from "@/components/premium-preview/inline-edit
 import { NotificationBellDropdown } from "@/components/premium-preview/notification-bell-dropdown";
 import { AlertBannerAutoDismiss } from "@/components/premium-preview/alert-banner-auto-dismiss";
 import { UndoSnackbar } from "@/components/premium-preview/undo-snackbar";
+import { AiCommandAssistant } from "@/components/premium-preview/ai-command-assistant";
+import { DashboardWidgetCustomizer } from "@/components/premium-preview/dashboard-widget-customizer";
+import { WhiteLabelThemeEditor } from "@/components/premium-preview/white-label-theme-editor";
+import { RealTimePresenceAvatars } from "@/components/premium-preview/real-time-presence-avatars";
+import { ConversionFunnelChart } from "@/components/premium-preview/conversion-funnel-chart";
 
 export interface PropRow {
   name: string;
@@ -807,5 +812,25 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "undo-snackbar": {
     slug: "undo-snackbar",
     preview: <UndoSnackbar />,
+  },
+  "ai-command-assistant": {
+    slug: "ai-command-assistant",
+    preview: <AiCommandAssistant />,
+  },
+  "dashboard-widget-customizer": {
+    slug: "dashboard-widget-customizer",
+    preview: <DashboardWidgetCustomizer />,
+  },
+  "white-label-theme-editor": {
+    slug: "white-label-theme-editor",
+    preview: <WhiteLabelThemeEditor />,
+  },
+  "real-time-presence-avatars": {
+    slug: "real-time-presence-avatars",
+    preview: <RealTimePresenceAvatars />,
+  },
+  "conversion-funnel-chart": {
+    slug: "conversion-funnel-chart",
+    preview: <ConversionFunnelChart />,
   },
 };

@@ -10,11 +10,19 @@ import { trackEvent } from "@/lib/analytics";
 import { AnalyticsDashboard } from "@/components/premium-preview/analytics-dashboard";
 import { BillingSettingsPanel } from "@/components/premium-preview/billing-settings-panel";
 import { AdminUsersPanel } from "@/components/premium-preview/admin-users-panel";
+import { OnboardingFlow } from "@/components/premium-preview/onboarding-flow";
+import { MarketingLandingPage } from "@/components/premium-preview/marketing-landing-page";
+import { CheckoutFlow } from "@/components/premium-preview/checkout-flow";
+import { SupportInboxPage } from "@/components/premium-preview/support-inbox-page";
 
 const templatePreviews: Record<string, React.ReactNode> = {
   "analytics-dashboard": <AnalyticsDashboard />,
   "billing-settings-panel": <BillingSettingsPanel />,
   "admin-users-panel": <AdminUsersPanel />,
+  "onboarding-flow": <OnboardingFlow />,
+  "marketing-landing-page": <MarketingLandingPage />,
+  "checkout-flow": <CheckoutFlow />,
+  "support-inbox-page": <SupportInboxPage />,
 };
 
 export default function TemplateDetail() {

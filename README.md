@@ -2,7 +2,7 @@
 
 Production-ready React components for modern SaaS dashboards.
 
-[Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Free Components](#free-vs-pro) · [Get Pro](#pricing)
+[Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Free Components](#free-vs-pro-vs-ultimate) · [Get Pro](#pricing)
 
 > Stop rebuilding the same SaaS dashboard UI. Production-ready React components — and growing — built with React,
 > TypeScript and Tailwind CSS. Copy, customize, ship.
@@ -16,11 +16,11 @@ Production-ready React components for modern SaaS dashboards.
 
 ## Components
 
-78 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
+83 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
 Communication, Data, Navigation, Forms and Notifications — and growing. See the full list and live previews at
 `/components` in the demo app, or in [`src/data/components.ts`](src/data/components.ts).
 
-### Free vs Pro
+### Free vs Pro vs Ultimate
 
 **Free (in this repository):**
 
@@ -47,7 +47,7 @@ Communication, Data, Navigation, Forms and Notifications — and growing. See th
 - File Upload Dropzone
 - Toast Notification Stack
 
-**Pro (SaaSForge UI Pro — 58 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 56 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
 Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
@@ -60,9 +60,18 @@ Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane 
 Validated Form Wizard, Dynamic Field Array Form, Inline Editable Table Row, Notification Bell Dropdown, Alert
 Banner, Undo Snackbar.
 
-Every Pro component has a live, working preview (built with mock data) on its `/components/:slug` page and via
-`/showcase/:slug` — only the install snippet, source code, and props/docs tables are gated behind "Unlock in Pro".
-The fully typed, tested, documented source sold to customers lives in the separate `saasforge-ui-pro` repository.
+**Ultimate (SaaSForge UI Ultimate — everything in Pro, plus):**
+
+- 7 complete dashboard templates: Analytics Dashboard, Billing & Settings Panel, Admin & Users Panel, Onboarding
+  Flow, Marketing Landing Page, Checkout Flow, Support / Inbox Page — full pages composed from the components
+  above, see `/templates` in the demo app.
+- 5 Ultimate-exclusive components (not available in Pro at any price): AI Command Assistant, Dashboard Widget
+  Customizer, White-Label Theme Editor, Real-Time Presence Avatars, Conversion Funnel Chart.
+
+Every Pro and Ultimate component/template has a live, working preview (built with mock data) on its
+`/components/:slug` or `/templates/:slug` page and via `/showcase/:slug` — only the install snippet, source code,
+and props/docs tables are gated behind "Unlock in Pro"/"Unlock in Ultimate". The fully typed, tested, documented
+source sold to customers lives in the separate `saasforge-ui-pro` repository.
 
 ## Tech Stack
 
@@ -125,12 +134,13 @@ src/
 
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
-| Price | $0 | $19 | $49 (coming soon) |
-| Components | 20 | 78 | 78 |
+| Price | $0 | $19 | $49 |
+| Components | 22 | 78 | 83 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |
-| Dashboard templates | — | — | ✓ |
+| Dashboard templates | — | — | 7 |
+| Ultimate-exclusive components | — | — | 5 |
 | Lifetime updates | — | ✓ | ✓ |
 
 ## License

@@ -23,6 +23,7 @@ export interface ComponentProductMetadata {
   tags: string[];
   difficulty: "beginner" | "intermediate" | "advanced";
   useCases: string[];
+  ultimateOnly?: boolean;
 }
 
 export interface TemplateProductMetadata {

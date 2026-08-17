@@ -25,11 +25,16 @@ export function ComponentsSidebar() {
                     }
                   >
                     <span>{component.name}</span>
-                    {!component.isFree && (
-                      <span className="shrink-0 rounded-full bg-primary/10 px-1.5 text-[10px] font-medium text-primary">
-                        PRO
-                      </span>
-                    )}
+                    {!component.isFree &&
+                      (component.ultimateOnly ? (
+                        <span className="shrink-0 rounded-full bg-violet-500/10 px-1.5 text-[10px] font-medium text-violet-600 dark:text-violet-400">
+                          ULTIMATE
+                        </span>
+                      ) : (
+                        <span className="shrink-0 rounded-full bg-primary/10 px-1.5 text-[10px] font-medium text-primary">
+                          PRO
+                        </span>
+                      ))}
                   </NavLink>
                 </li>
               ))}

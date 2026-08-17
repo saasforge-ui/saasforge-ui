@@ -32,6 +32,10 @@ export default function ComponentDetail() {
           <h1 className="text-2xl font-semibold tracking-tight">{component.name}</h1>
           {component.isFree ? (
             <Badge variant="success">FREE</Badge>
+          ) : component.ultimateOnly ? (
+            <Badge variant="secondary" className="border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400">
+              ULTIMATE
+            </Badge>
           ) : (
             <Badge variant="secondary">PRO</Badge>
           )}
@@ -58,12 +62,17 @@ export default function ComponentDetail() {
                   <Sparkles className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <div>
-                  <p className="font-medium">Full preview available in Pro</p>
+                  <p className="font-medium">
+                    Full preview available in {component.ultimateOnly ? "Ultimate" : "Pro"}
+                  </p>
                   <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-                    This component is part of SaaSForge UI Pro. Use cases: {component.useCases.join(", ")}.
+                    This component is part of SaaSForge UI {component.ultimateOnly ? "Ultimate" : "Pro"}. Use cases:{" "}
+                    {component.useCases.join(", ")}.
                   </p>
                 </div>
-                <PurchaseButton size="sm">Unlock in Pro</PurchaseButton>
+                <PurchaseButton size="sm" product={component.ultimateOnly ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}>
+                  Unlock in {component.ultimateOnly ? "Ultimate" : "Pro"}
+                </PurchaseButton>
               </div>
             )}
           </CardContent>
@@ -71,10 +80,12 @@ export default function ComponentDetail() {
         {!component.isFree && doc && (
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-dashed border-border bg-muted/30 px-4 py-3">
             <p className="text-sm text-muted-foreground">
-              This is a live preview with sample data. Full source, types, props and docs are part of SaaSForge UI
-              Pro.
+              This is a live preview with sample data. Full source, types, props and docs are part of SaaSForge UI{" "}
+              {component.ultimateOnly ? "Ultimate" : "Pro"}.
             </p>
-            <PurchaseButton size="sm">Unlock in Pro</PurchaseButton>
+            <PurchaseButton size="sm" product={component.ultimateOnly ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}>
+              Unlock in {component.ultimateOnly ? "Ultimate" : "Pro"}
+            </PurchaseButton>
           </div>
         )}
       </section>
