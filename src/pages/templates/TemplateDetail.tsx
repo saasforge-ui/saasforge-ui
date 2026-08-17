@@ -37,7 +37,7 @@ export default function TemplateDetail() {
     .filter((component): component is NonNullable<typeof component> => Boolean(component));
 
   return (
-    <div className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">{template.name}</h1>
