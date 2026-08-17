@@ -25,6 +25,14 @@ export interface ComponentProductMetadata {
   useCases: string[];
 }
 
+export interface TemplateProductMetadata {
+  slug: string;
+  name: string;
+  description: string;
+  componentSlugs: string[];
+  tags: string[];
+}
+
 export type AsyncState = "idle" | "loading" | "success" | "error" | "empty";
 
 export type TrendDirection = "up" | "down" | "neutral";

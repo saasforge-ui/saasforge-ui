@@ -9,6 +9,8 @@ import NotFound from "@/pages/NotFound";
 import ComponentsLayout from "@/pages/components/ComponentsLayout";
 import ComponentsIndex from "@/pages/components/ComponentsIndex";
 import ComponentDetail from "@/pages/components/ComponentDetail";
+import TemplatesIndex from "@/pages/templates/TemplatesIndex";
+import TemplateDetail from "@/pages/templates/TemplateDetail";
 import { usePageViewTracking } from "@/hooks/use-page-view-tracking";
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/docs" element={<Navigate to="/components" replace />} />
+          <Route path="/templates" element={<TemplatesIndex />} />
+          <Route path="/templates/:slug" element={<TemplateDetail />} />
           <Route path="/components" element={<ComponentsLayout />}>
             <Route index element={<ComponentsIndex />} />
             <Route path=":slug" element={<ComponentDetail />} />

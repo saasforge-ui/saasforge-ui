@@ -11,6 +11,7 @@ import * as React from "react";
 
 const navLinks = [
   { to: "/components", label: "Components" },
+  { to: "/templates", label: "Templates" },
   { to: "/pricing", label: "Pricing" },
 ];
 

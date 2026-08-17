@@ -1,6 +1,7 @@
 export type AnalyticsEvent =
   | "page_view"
   | "component_preview"
+  | "template_preview"
   | "free_component_click"
   | "github_click"
   | "pricing_view"
