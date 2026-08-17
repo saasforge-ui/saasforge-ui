@@ -37,7 +37,7 @@ export default function TemplateDetail() {
     .filter((component): component is NonNullable<typeof component> => Boolean(component));
 
   return (
-    <div className="mx-auto max-w-4xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl space-y-10 px-4 py-10 sm:px-6 lg:px-8">
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-2xl font-semibold tracking-tight">{template.name}</h1>
@@ -76,7 +76,7 @@ export default function TemplateDetail() {
           This template composes the following SaaSForge UI components. Don't need the whole template? Each
           component is also available on its own in Pro.
         </p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {builtFromComponents.map((component) => (
             <Link key={component.slug} to={`/components/${component.slug}`}>
               <Card className="h-full transition-colors hover:border-primary/40">
