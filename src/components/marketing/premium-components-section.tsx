@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { PurchaseButton } from "@/components/common/purchase-button";
 import { Badge } from "@/components/ui/badge";
 import { componentRegistry } from "@/data/components";
 
 const PREVIEW_COUNT = 12;
+const MotionLink = motion.create(Link);
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.04 } },
+} as const;
+
+const tileVariants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 26 } },
+} as const;
 
 export function PremiumComponentsSection() {
   const preview = componentRegistry.slice(0, PREVIEW_COUNT);
@@ -23,12 +35,21 @@ export function PremiumComponentsSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        <motion.div
+          className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {preview.map((component) => (
-            <Link
+            <MotionLink
               key={component.slug}
               to={`/components/${component.slug}`}
-              className="group flex flex-col gap-2 rounded-lg border border-border bg-card p-4 transition-colors hover:border-primary/40"
+              variants={tileVariants}
+              whileHover={{ y: -4, scale: 1.015 }}
+              transition={{ type: "spring", stiffness: 350, damping: 22 }}
+              className="group flex flex-col gap-2 rounded-lg border border-border bg-card p-4 shadow-sm transition-shadow hover:border-primary/40 hover:shadow-md"
             >
               <div className="flex items-start justify-between gap-2">
                 <span className="text-sm font-medium leading-tight">{component.name}</span>
@@ -43,18 +64,21 @@ export function PremiumComponentsSection() {
                 )}
               </div>
               <span className="text-xs text-muted-foreground">{component.category}</span>
-            </Link>
+            </MotionLink>
           ))}
           {remaining > 0 && (
-            <Link
+            <MotionLink
               to="/components"
+              variants={tileVariants}
+              whileHover={{ y: -4, scale: 1.015 }}
+              transition={{ type: "spring", stiffness: 350, damping: 22 }}
               className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-border p-4 text-center transition-colors hover:border-primary/40 hover:bg-accent/50"
             >
               <span className="text-sm font-medium">+{remaining} more</span>
               <span className="text-xs text-muted-foreground">View full catalog</span>
-            </Link>
+            </MotionLink>
           )}
-        </div>
+        </motion.div>
 
         <div className="mt-10 text-center">
           <PurchaseButton size="lg">

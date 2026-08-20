@@ -1,10 +1,21 @@
 import { Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { PurchaseButton } from "@/components/common/purchase-button";
 import { pricingConfig } from "@/lib/config";
 import { cn } from "@/lib/utils";
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+} as const;
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 260, damping: 24 } },
+} as const;
 
 export function PricingSection() {
   const { tiers, launchOffer } = pricingConfig;
@@ -21,11 +32,25 @@ export function PricingSection() {
         )}
       </div>
 
-      <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+      <motion.div
+        className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {tiers.map((tier) => (
-          <Card
+          <motion.div
             key={tier.id}
-            className={cn("flex flex-col", tier.highlighted && "border-primary shadow-md ring-1 ring-primary")}
+            variants={cardVariants}
+            whileHover={{ y: -6 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+          >
+          <Card
+            className={cn(
+              "flex h-full flex-col transition-shadow duration-300 hover:shadow-lg",
+              tier.highlighted && "border-primary shadow-md ring-1 ring-primary hover:shadow-primary/20",
+            )}
           >
             <CardHeader>
               {tier.highlighted && (
@@ -70,8 +95,9 @@ export function PricingSection() {
               )}
             </CardFooter>
           </Card>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

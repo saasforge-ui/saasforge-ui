@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+const MotionButton = motion.create("button");
+const MotionSlot = motion.create(Slot);
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
@@ -30,18 +34,26 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      "onDrag" | "onDragStart" | "onDragEnd" | "onAnimationStart" | "onAnimationEnd" | "onAnimationIteration"
+    >,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
+const tapSpring = { type: "spring", stiffness: 500, damping: 30 } as const;
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const MotionComp = asChild ? MotionSlot : MotionButton;
     return (
-      <Comp
+      <MotionComp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        whileTap={{ scale: 0.96 }}
+        whileHover={{ scale: 1.015 }}
+        transition={tapSpring}
         {...props}
       />
     );

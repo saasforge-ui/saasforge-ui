@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { ToastNotificationStack } from "./toast-notification-stack";
 
@@ -31,6 +31,6 @@ describe("ToastNotificationStack", () => {
     await userEvent.click(screen.getByRole("button", { name: "Trigger info" }));
     expect(screen.getByRole("status")).toBeInTheDocument();
     await userEvent.click(screen.getByRole("button", { name: "Dismiss notification" }));
-    expect(screen.queryByRole("status")).not.toBeInTheDocument();
+    await waitFor(() => expect(screen.queryByRole("status")).not.toBeInTheDocument());
   });
 });
