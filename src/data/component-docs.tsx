@@ -22,6 +22,9 @@ import TabBarOverflowExample from "@/examples/tab-bar-overflow.example";
 import PaginationBarExample from "@/examples/pagination-bar.example";
 import FileUploadDropzoneExample from "@/examples/file-upload-dropzone.example";
 import ToastNotificationStackExample from "@/examples/toast-notification-stack.example";
+import AiPromptInputExample from "@/examples/ai-prompt-input.example";
+import AiSuggestionChipsExample from "@/examples/ai-suggestion-chips.example";
+import CodeBlockTabsExample from "@/examples/code-block-tabs.example";
 
 import revenueAnalyticsSource from "@/examples/revenue-analytics-card.example.tsx?raw";
 import usageMetricsSource from "@/examples/usage-metrics-card.example.tsx?raw";
@@ -45,6 +48,9 @@ import tabBarOverflowSource from "@/examples/tab-bar-overflow.example.tsx?raw";
 import paginationBarSource from "@/examples/pagination-bar.example.tsx?raw";
 import fileUploadDropzoneSource from "@/examples/file-upload-dropzone.example.tsx?raw";
 import toastNotificationStackSource from "@/examples/toast-notification-stack.example.tsx?raw";
+import aiPromptInputSource from "@/examples/ai-prompt-input.example.tsx?raw";
+import aiSuggestionChipsSource from "@/examples/ai-suggestion-chips.example.tsx?raw";
+import codeBlockTabsSource from "@/examples/code-block-tabs.example.tsx?raw";
 
 import revenueAnalyticsComponentSource from "@/components/free/revenue-analytics-card.tsx?raw";
 import usageMetricsComponentSource from "@/components/free/usage-metrics-card.tsx?raw";
@@ -68,6 +74,9 @@ import tabBarOverflowComponentSource from "@/components/free/tab-bar-overflow.ts
 import paginationBarComponentSource from "@/components/free/pagination-bar.tsx?raw";
 import fileUploadDropzoneComponentSource from "@/components/free/file-upload-dropzone.tsx?raw";
 import toastNotificationStackComponentSource from "@/components/free/toast-notification-stack.tsx?raw";
+import aiPromptInputComponentSource from "@/components/free/ai-prompt-input.tsx?raw";
+import aiSuggestionChipsComponentSource from "@/components/free/ai-suggestion-chips.tsx?raw";
+import codeBlockTabsComponentSource from "@/components/free/code-block-tabs.tsx?raw";
 
 import { DashboardOverview } from "@/components/premium-preview/dashboard-overview";
 import { UserManagementTable } from "@/components/premium-preview/user-management-table";
@@ -130,6 +139,15 @@ import { DashboardWidgetCustomizer } from "@/components/premium-preview/dashboar
 import { WhiteLabelThemeEditor } from "@/components/premium-preview/white-label-theme-editor";
 import { RealTimePresenceAvatars } from "@/components/premium-preview/real-time-presence-avatars";
 import { ConversionFunnelChart } from "@/components/premium-preview/conversion-funnel-chart";
+import { AiMessageThread } from "@/components/premium-preview/ai-message-thread";
+import { AiReasoningPanel } from "@/components/premium-preview/ai-reasoning-panel";
+import { AiToolCallCard } from "@/components/premium-preview/ai-tool-call-card";
+import { AiSourcesCitations } from "@/components/premium-preview/ai-sources-citations";
+import { ApiRequestPlayground } from "@/components/premium-preview/api-request-playground";
+import { WebhookEventLog } from "@/components/premium-preview/webhook-event-log";
+import { ChangelogFeed } from "@/components/premium-preview/changelog-feed";
+import { StatusPageUptime } from "@/components/premium-preview/status-page-uptime";
+import { EnvVariablesEditor } from "@/components/premium-preview/env-variables-editor";
 
 export interface PropRow {
   name: string;
@@ -789,6 +807,70 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
     componentSourcePath: "src/components/free/toast-notification-stack.tsx",
     preview: <ToastNotificationStackExample />,
   },
+  "ai-prompt-input": {
+    slug: "ai-prompt-input",
+    installDeps: ["@radix-ui/react-select", "framer-motion", "lucide-react"],
+    props: [
+      { name: "onSubmit", type: "(value: string, attachments: PromptAttachment[]) => void", description: "Called with the trimmed prompt and attachments on Enter or send. The input clears afterwards." },
+      { name: "isGenerating", type: "boolean", default: "false", description: "Swaps the send button for a stop button and stops Enter from submitting." },
+      { name: "onStop", type: "() => void", description: "Called when the stop button is pressed while generating." },
+      { name: "models", type: "PromptModel[]", description: "Options for the model selector (`{ value, label }`). Hidden when omitted." },
+      { name: "model / defaultModel", type: "string", description: "Controlled or initial model value." },
+      { name: "onModelChange", type: "(value: string) => void", description: "Called when the user picks a model." },
+      { name: "placeholder", type: "string", default: "\"Ask anything…\"", description: "Textarea placeholder." },
+      { name: "maxHeight", type: "number", default: "200", description: "Max textarea height in px before it scrolls." },
+      { name: "accept", type: "string", description: "Accepted file types for attachments, e.g. `\"image/*,.pdf\"`." },
+      { name: "maxAttachments", type: "number", default: "5", description: "Attachment limit; the attach button disables when reached." },
+      { name: "disabled", type: "boolean", default: "false", description: "Disables the whole composer." },
+    ],
+    states: ["Empty (send disabled)", "Typing (auto-grows up to maxHeight, then scrolls)", "With attachments", "Drag-over", "Generating (stop button)", "Disabled"],
+    accessibility: ["Enter sends and Shift+Enter inserts a newline; IME composition is respected so Enter never submits mid-composition.", "The textarea has a label and a screen-reader hint describing the keyboard shortcuts.", "Icon buttons carry descriptive `aria-label`s (\"Attach files\", \"Remove notes.pdf\", \"Send message\" / \"Stop generating\")."],
+    customization: ["Reuses the shared `Select` for the model picker, so it inherits the origin-aware popover animation.", "Submitting with Enter deliberately has no animation on the input itself — keyboard actions should feel instant."],
+    responsive: ["Fills its container; attachment chips wrap and long file names truncate."],
+    source: aiPromptInputSource,
+    componentSource: aiPromptInputComponentSource,
+    componentSourcePath: "src/components/free/ai-prompt-input.tsx",
+    preview: <AiPromptInputExample />,
+  },
+  "ai-suggestion-chips": {
+    slug: "ai-suggestion-chips",
+    installDeps: ["lucide-react"],
+    props: [
+      { name: "suggestions", type: "(string | SuggestionChip)[]", required: true, description: "Prompts to show. Objects accept `{ text, label?, icon? }`." },
+      { name: "onSelect", type: "(text: string) => void", description: "Called with the full prompt text when a chip is clicked." },
+      { name: "layout", type: "\"wrap\" | \"scroll\"", default: "\"wrap\"", description: "Wrap onto multiple lines or keep one horizontally-scrollable row." },
+      { name: "title", type: "string", default: "\"Suggested prompts\"", description: "Accessible label for the list." },
+      { name: "showTitle", type: "boolean", default: "false", description: "Render the title as a visible heading." },
+      { name: "disabled", type: "boolean", default: "false", description: "Disables every chip." },
+    ],
+    states: ["Wrap layout", "Scroll layout (edge fade)", "With icons", "Disabled", "Empty (renders nothing)"],
+    accessibility: ["Rendered as a labelled list of native buttons, so they're reachable with Tab and activate with Enter/Space.", "Long labels truncate visually and expose the full text via `title`."],
+    customization: ["The entrance stagger is 40ms per chip and capped at 8 chips so long lists never wait; it's a one-off mount animation and never blocks clicks."],
+    responsive: ["Use `layout=\"scroll\"` on narrow screens to keep suggestions on a single swipeable row."],
+    source: aiSuggestionChipsSource,
+    componentSource: aiSuggestionChipsComponentSource,
+    componentSourcePath: "src/components/free/ai-suggestion-chips.tsx",
+    preview: <AiSuggestionChipsExample />,
+  },
+  "code-block-tabs": {
+    slug: "code-block-tabs",
+    installDeps: ["@radix-ui/react-tabs", "framer-motion", "lucide-react"],
+    props: [
+      { name: "tabs", type: "CodeTab[]", required: true, description: "`{ label, code, filename?, value? }` per language/variant." },
+      { name: "defaultValue", type: "string", default: "first tab", description: "Initially selected tab (`value` or `label`)." },
+      { name: "showLineNumbers", type: "boolean", default: "true", description: "Show the sticky line-number gutter." },
+      { name: "maxHeight", type: "string", description: "Max height before vertical scrolling, e.g. `\"24rem\"`." },
+      { name: "onCopy", type: "(tab: CodeTab) => void", description: "Called after the active tab's code is copied." },
+    ],
+    states: ["Multiple tabs", "Single snippet (no tab list)", "With filename", "Copied", "Empty"],
+    accessibility: ["Uses the shared Tabs, so arrow keys move between languages.", "The code area is a focusable, labelled scroll region; line numbers are `aria-hidden` and unselectable so copying never includes them.", "A polite status region announces \"Code copied to clipboard\"."],
+    customization: ["No syntax-highlighting dependency — wrap lines in your highlighter of choice if you need colors.", "The copy icon crossfades to a check with a 2px blur to mask the swap."],
+    responsive: ["Long lines scroll horizontally with a sticky gutter; long filenames truncate."],
+    source: codeBlockTabsSource,
+    componentSource: codeBlockTabsComponentSource,
+    componentSourcePath: "src/components/free/code-block-tabs.tsx",
+    preview: <CodeBlockTabsExample />,
+  },
   "validated-form-wizard": {
     slug: "validated-form-wizard",
     preview: <ValidatedFormWizard />,
@@ -832,5 +914,41 @@ export const componentDocs: Record<string, ComponentDocEntry> = {
   "conversion-funnel-chart": {
     slug: "conversion-funnel-chart",
     preview: <ConversionFunnelChart />,
+  },
+  "ai-message-thread": {
+    slug: "ai-message-thread",
+    preview: <AiMessageThread />,
+  },
+  "ai-reasoning-panel": {
+    slug: "ai-reasoning-panel",
+    preview: <AiReasoningPanel />,
+  },
+  "ai-tool-call-card": {
+    slug: "ai-tool-call-card",
+    preview: <AiToolCallCard />,
+  },
+  "ai-sources-citations": {
+    slug: "ai-sources-citations",
+    preview: <AiSourcesCitations />,
+  },
+  "api-request-playground": {
+    slug: "api-request-playground",
+    preview: <ApiRequestPlayground />,
+  },
+  "webhook-event-log": {
+    slug: "webhook-event-log",
+    preview: <WebhookEventLog />,
+  },
+  "changelog-feed": {
+    slug: "changelog-feed",
+    preview: <ChangelogFeed />,
+  },
+  "status-page-uptime": {
+    slug: "status-page-uptime",
+    preview: <StatusPageUptime />,
+  },
+  "env-variables-editor": {
+    slug: "env-variables-editor",
+    preview: <EnvVariablesEditor />,
   },
 };

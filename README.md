@@ -16,8 +16,8 @@ Production-ready React components for modern SaaS dashboards.
 
 ## Components
 
-83 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
-Communication, Data, Navigation, Forms and Notifications — and growing. See the full list and live previews at
+95 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
+Communication, Data, Navigation, Forms, Notifications, AI and Developer — and growing. See the full list and live previews at
 `/components` in the demo app, or in [`src/data/components.ts`](src/data/components.ts).
 
 ### Free vs Pro vs Ultimate
@@ -46,8 +46,11 @@ Communication, Data, Navigation, Forms and Notifications — and growing. See th
 - Pagination Bar
 - File Upload Dropzone
 - Toast Notification Stack
+- AI Prompt Input
+- AI Suggestion Chips
+- Code Block with Tabs
 
-**Pro (SaaSForge UI Pro — 56 additional components):** Dashboard Overview, User Management Table, Subscription
+**Pro (SaaSForge UI Pro — 65 additional components):** Dashboard Overview, User Management Table, Subscription
 Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
 Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
 Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
@@ -58,7 +61,8 @@ Notification Preferences Panel, Kanban Board, Calendar Event View, Data Grid wit
 Explorer, Gantt Chart Row, Heatmap Calendar, Pivot-style Summary Table, Virtualized Long List, Timeline Chart,
 Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane Layout, Sticky Table of Contents,
 Validated Form Wizard, Dynamic Field Array Form, Inline Editable Table Row, Notification Bell Dropdown, Alert
-Banner, Undo Snackbar.
+Banner, Undo Snackbar, AI Message Thread, AI Reasoning Panel, AI Tool Call Card, AI Sources & Citations, API
+Request Playground, Webhook Event Log, Changelog Feed, Status Page / Uptime, Environment Variables Editor.
 
 **Ultimate (SaaSForge UI Ultimate — everything in Pro, plus):**
 
@@ -135,7 +139,7 @@ src/
 | | Free | Pro | Ultimate |
 | --- | --- | --- | --- |
 | Price | $0 | $19 | $49 |
-| Components | 22 | 78 | 83 |
+| Components | 25 | 90 | 95 |
 | Full source | — | ✓ | ✓ |
 | Dark mode | ✓ | ✓ | ✓ |
 | Commercial usage | — | ✓ | ✓ |
