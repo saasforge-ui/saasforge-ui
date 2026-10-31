@@ -3,7 +3,11 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const TabsActiveValueContext = React.createContext<string | undefined>(undefined);
+// Scoped per Tabs root so two tab sets on one page never share (and swap) the sliding pill.
+const TabsContext = React.createContext<{ activeValue: string | undefined; pillId: string }>({
+  activeValue: undefined,
+  pillId: "tabs-active-pill",
+});
 
 const Tabs = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Root>,
@@ -11,9 +15,10 @@ const Tabs = React.forwardRef<
 >(({ value, defaultValue, onValueChange, ...props }, ref) => {
   const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue);
   const activeValue = value ?? uncontrolledValue;
+  const pillId = `tabs-pill-${React.useId()}`;
 
   return (
-    <TabsActiveValueContext.Provider value={activeValue}>
+    <TabsContext.Provider value={{ activeValue, pillId }}>
       <TabsPrimitive.Root
         ref={ref}
         value={value}
@@ -24,7 +29,7 @@ const Tabs = React.forwardRef<
         }}
         {...props}
       />
-    </TabsActiveValueContext.Provider>
+    </TabsContext.Provider>
   );
 });
 Tabs.displayName = TabsPrimitive.Root.displayName;
@@ -48,7 +53,7 @@ const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, children, value, ...props }, ref) => {
-  const activeValue = React.useContext(TabsActiveValueContext);
+  const { activeValue, pillId } = React.useContext(TabsContext);
   const isActive = value !== undefined && value === activeValue;
 
   return (
@@ -63,7 +68,7 @@ const TabsTrigger = React.forwardRef<
     >
       {isActive && (
         <motion.span
-          layoutId="tabs-active-pill"
+          layoutId={pillId}
           className="absolute inset-0 rounded-md bg-background shadow"
           transition={{ type: "spring", stiffness: 400, damping: 32 }}
         />
