@@ -10,7 +10,7 @@ import { freeComponents } from "@/data/components";
 
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } },
 } as const;
 
 const itemVariants = {

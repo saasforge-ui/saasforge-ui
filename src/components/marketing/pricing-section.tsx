@@ -43,7 +43,7 @@ export function PricingSection() {
           <motion.div
             key={tier.id}
             variants={cardVariants}
-            whileHover={{ y: -6 }}
+            whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
           >
           <Card

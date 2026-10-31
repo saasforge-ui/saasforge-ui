@@ -47,7 +47,7 @@ export function PremiumComponentsSection() {
               key={component.slug}
               to={`/components/${component.slug}`}
               variants={tileVariants}
-              whileHover={{ y: -4, scale: 1.015 }}
+              whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 350, damping: 22 }}
               className="group flex flex-col gap-2 rounded-lg border border-border bg-card p-4 shadow-sm transition-shadow hover:border-primary/40 hover:shadow-md"
             >
@@ -70,7 +70,7 @@ export function PremiumComponentsSection() {
             <MotionLink
               to="/components"
               variants={tileVariants}
-              whileHover={{ y: -4, scale: 1.015 }}
+              whileHover={{ y: -3 }}
               transition={{ type: "spring", stiffness: 350, damping: 22 }}
               className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-border p-4 text-center transition-colors hover:border-primary/40 hover:bg-accent/50"
             >

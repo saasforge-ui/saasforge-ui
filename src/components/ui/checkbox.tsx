@@ -18,7 +18,7 @@ const Checkbox = React.forwardRef<
     <CheckboxPrimitive.Indicator
       forceMount
       className={cn(
-        "flex origin-center scale-[0.4] items-center justify-center text-current opacity-0 transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] data-[state=checked]:scale-100 data-[state=checked]:opacity-100 data-[state=indeterminate]:scale-100 data-[state=indeterminate]:opacity-100",
+        "flex origin-center scale-[0.6] items-center justify-center text-current opacity-0 transition-[scale,opacity] duration-150 ease-out-strong data-[state=checked]:scale-100 data-[state=checked]:opacity-100 data-[state=indeterminate]:scale-100 data-[state=indeterminate]:opacity-100",
       )}
     >
       <Check className="h-3.5 w-3.5" />

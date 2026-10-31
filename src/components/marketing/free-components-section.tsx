@@ -41,7 +41,7 @@ export function FreeComponentsSection() {
           <motion.div
             key={component.slug}
             variants={cardVariants}
-            whileHover={{ y: -6 }}
+            whileHover={{ y: -4 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
           >
           <Card className="flex h-full flex-col transition-shadow duration-300 hover:shadow-lg">
