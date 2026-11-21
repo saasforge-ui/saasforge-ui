@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "Is SaaSForge UI really free?",
     answer:
-      "Yes. Every component and template is free and open source under the MIT license — full TypeScript source, docs and examples, no paid tiers or locked features.",
+      "Yes — and it always will be. Every component and template is free forever and open source under the MIT license: full TypeScript source, docs and examples, no paid tiers, no locked features, no license keys.",
   },
   {
     question: "Can I use SaaSForge UI in commercial projects?",

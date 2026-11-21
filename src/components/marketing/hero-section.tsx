@@ -36,8 +36,8 @@ export function HeroSection() {
         variants={itemVariants}
         className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground"
       >
-        {componentRegistry.length} components and {templateRegistry.length} full-page templates, free and open source under
-        the MIT license. Built with React, TypeScript and Tailwind CSS — copy, customize, and ship.
+        {componentRegistry.length} components and {templateRegistry.length} full-page templates, free forever and open source
+        under the MIT license. Built with React, TypeScript and Tailwind CSS — copy, customize, and ship.
       </motion.p>
       <motion.div variants={itemVariants} className="mt-10 flex flex-wrap items-center justify-center gap-3">
         <Button size="lg" asChild>
