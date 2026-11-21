@@ -1,4 +1,4 @@
-import { ProductCardGrid } from "@/components/free/product-card-grid";
+import { ProductCardGrid } from "@/components/saas/ecommerce/product-card-grid";
 
 export default function Example() {
   return (

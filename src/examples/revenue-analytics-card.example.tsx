@@ -1,4 +1,4 @@
-import { RevenueAnalyticsCard } from "@/components/free/revenue-analytics-card";
+import { RevenueAnalyticsCard } from "@/components/saas/dashboard/revenue-analytics-card";
 
 export default function Example() {
   return (

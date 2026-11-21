@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
-import { ConfirmationDialog, type ConfirmationDialogVariant } from "@/components/free/confirmation-dialog";
+import { ConfirmationDialog, type ConfirmationDialogVariant } from "@/components/saas/utilities/confirmation-dialog";
 
 const dialogsByVariant: Record<
   ConfirmationDialogVariant,

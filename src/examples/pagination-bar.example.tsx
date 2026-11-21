@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PaginationBar } from "@/components/free/pagination-bar";
+import { PaginationBar } from "@/components/saas/navigation/pagination-bar";
 
 export default function Example() {
   const [currentPage, setCurrentPage] = React.useState(5);

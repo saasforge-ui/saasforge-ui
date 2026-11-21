@@ -1,4 +1,4 @@
-import { CommentThread } from "@/components/free/comment-thread";
+import { CommentThread } from "@/components/saas/communication/comment-thread";
 
 export default function Example() {
   return (

@@ -1,4 +1,4 @@
-import { AnalyticsChartCard } from "@/components/free/analytics-chart-card";
+import { AnalyticsChartCard } from "@/components/saas/analytics/analytics-chart-card";
 
 export default function Example() {
   return (

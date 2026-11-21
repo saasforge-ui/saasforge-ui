@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TabBarOverflow } from "@/components/free/tab-bar-overflow";
+import { TabBarOverflow } from "@/components/saas/navigation/tab-bar-overflow";
 
 export default function Example() {
   const [activeTabId, setActiveTabId] = React.useState("overview");

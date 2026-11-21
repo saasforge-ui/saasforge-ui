@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Menu, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/common/theme-toggle";
-import { PurchaseButton } from "@/components/common/purchase-button";
+import { SupportButton } from "@/components/common/support-button";
 import { GithubIcon } from "@/components/common/github-icon";
 import { siteConfig } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
@@ -12,7 +12,6 @@ import * as React from "react";
 const navLinks = [
   { to: "/components", label: "Components" },
   { to: "/templates", label: "Templates" },
-  { to: "/pricing", label: "Pricing" },
 ];
 
 export function SiteHeader() {
@@ -56,7 +55,7 @@ export function SiteHeader() {
             </a>
           </Button>
           <ThemeToggle />
-          <PurchaseButton size="sm">Get Pro</PurchaseButton>
+          <SupportButton size="sm" placement="header" />
         </div>
 
         <div className="flex items-center gap-1 md:hidden">
@@ -92,9 +91,11 @@ export function SiteHeader() {
                 </NavLink>
               </li>
             ))}
-            <li className="pt-2">
-              <PurchaseButton className="w-full">Get Pro</PurchaseButton>
-            </li>
+            {siteConfig.kofiUrl && (
+              <li className="pt-2">
+                <SupportButton className="w-full" placement="header-mobile" />
+              </li>
+            )}
           </ul>
         </nav>
       )}

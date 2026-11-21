@@ -1,114 +1,62 @@
 # SaaSForge UI
 
-Production-ready React components for modern SaaS dashboards.
+Free, open-source React components for modern SaaS dashboards.
 
-[Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Free Components](#free-vs-pro-vs-ultimate) · [Get Pro](#pricing)
+[Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Components](https://saasforge-ui.github.io/saasforge-ui/components) · [Templates](https://saasforge-ui.github.io/saasforge-ui/templates)
 
-> Stop rebuilding the same SaaS dashboard UI. Production-ready React components — and growing — built with React,
-> TypeScript and Tailwind CSS. Copy, customize, ship.
+> Stop rebuilding the same SaaS dashboard UI. 95 components and 7 full-page templates built with React, TypeScript
+> and Tailwind CSS — all MIT licensed. Copy, customize, ship.
 
 ## Why SaaSForge UI?
 
-- **Copy & Customize** — no black-box components; take the source and make it yours.
+- **Free and open source** — every component and template, with full source, docs and examples. MIT licensed, including commercial use.
+- **Copy & Customize** — no black-box package; take the source and make it yours.
 - **Production Ready** — loading, empty and error states, validation, responsive behavior and accessibility included.
 - **TypeScript First** — strong types and predictable component APIs.
-- **Built for SaaS** — billing, analytics, users, teams, permissions and settings out of the box.
+- **Built for SaaS** — billing, analytics, users, teams, permissions, AI and developer tooling out of the box.
 
-## Components
+## What's included
 
-95 components across Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing, Ecommerce,
-Communication, Data, Navigation, Forms, Notifications, AI and Developer — and growing. See the full list and live previews at
+**95 components** across 16 categories: Dashboard, Users, Billing, Analytics, Settings, Utilities, Auth, Marketing,
+Ecommerce, Communication, Data, Navigation, Forms, Notifications, AI and Developer. Browse them with live previews at
 `/components` in the demo app, or in [`src/data/components.ts`](src/data/components.ts).
 
-### Free vs Pro vs Ultimate
+**7 full-page templates** composed from those components: Analytics Dashboard, Billing & Settings Panel, Admin & Users
+Panel, Onboarding Flow, Marketing Landing Page, Checkout Flow and Support / Inbox Page. See `/templates` in the demo
+app, or [`src/templates/`](src/templates).
 
-**Free (in this repository):**
+Every component page includes a live preview, the full component source, a usage example, the props reference,
+states, accessibility notes and responsive behavior.
 
-- Revenue Analytics Card
-- Usage Metrics Card
-- Analytics Chart Card
-- Empty State
-- Confirmation Dialog System
-- Login Form
-- FAQ Accordion Section
-- Signup Form
-- Order Summary Card
-- Product Card Grid
-- Coupon Code Input
-- Order Confirmation Card
-- Comment Thread
-- Typing Indicator
-- Announcement Banner
-- Comparison Table
-- Breadcrumbs
-- Stepper / Wizard Nav
-- Tab Bar with Overflow
-- Pagination Bar
-- File Upload Dropzone
-- Toast Notification Stack
-- AI Prompt Input
-- AI Suggestion Chips
-- Code Block with Tabs
+## Using a component
 
-**Pro (SaaSForge UI Pro — 65 additional components):** Dashboard Overview, User Management Table, Subscription
-Status Card, Pricing Plan Comparison, Recent Activity Timeline, Notifications Center, Invoice List, Payment Method
-Card, Team Members Manager, Role & Permission Matrix, API Key Manager, Organization Switcher, Advanced Data Filter
-Toolbar, Data Export Menu, SaaS Settings Form, Onboarding Wizard, Reset Password Flow, Feature Grid Section, CTA
-Banner Section, Goal Progress Card, Shopping Cart Drawer, Payment Method Selector, Shipping Address Form, Order
-Tracking Timeline, Checkout Stepper, Wishlist Item List, Product Quick View Modal, Chat Widget, Message Bubble
-List, Support Inbox List, Mention Autocomplete Input, Chat Channel Sidebar, Video Call Card, Feedback Widget,
-Notification Preferences Panel, Kanban Board, Calendar Event View, Data Grid with Inline Edit, Tree View / File
-Explorer, Gantt Chart Row, Heatmap Calendar, Pivot-style Summary Table, Virtualized Long List, Timeline Chart,
-Command Palette, Vertical Nav Sidebar, Mega Menu, Mobile Bottom Nav, Split Pane Layout, Sticky Table of Contents,
-Validated Form Wizard, Dynamic Field Array Form, Inline Editable Table Row, Notification Bell Dropdown, Alert
-Banner, Undo Snackbar, AI Message Thread, AI Reasoning Panel, AI Tool Call Card, AI Sources & Citations, API
-Request Playground, Webhook Event Log, Changelog Feed, Status Page / Uptime, Environment Variables Editor.
-
-**Ultimate (SaaSForge UI Ultimate — everything in Pro, plus):**
-
-- 7 complete dashboard templates: Analytics Dashboard, Billing & Settings Panel, Admin & Users Panel, Onboarding
-  Flow, Marketing Landing Page, Checkout Flow, Support / Inbox Page — full pages composed from the components
-  above, see `/templates` in the demo app.
-- 5 Ultimate-exclusive components (not available in Pro at any price): AI Command Assistant, Dashboard Widget
-  Customizer, White-Label Theme Editor, Real-Time Presence Avatars, Conversion Funnel Chart.
-
-Every Pro and Ultimate component/template has a live, working preview (built with mock data) on its
-`/components/:slug` or `/templates/:slug` page and via `/showcase/:slug` — only the install snippet, source code,
-and props/docs tables are gated behind "Unlock in Pro"/"Unlock in Ultimate". The fully typed, tested, documented
-source sold to customers lives in the separate `saasforge-ui-pro` repository.
+1. Open the component's page in the demo app.
+2. Copy the component source into your project (the page shows the suggested path).
+3. Install the npm dependencies listed under **Installation**.
+4. Make sure the shared primitives it imports from [`src/components/ui`](src/components/ui) and the theme tokens in
+   [`src/index.css`](src/index.css) are in your project too.
 
 ## Tech Stack
 
-React · TypeScript · Vite · Tailwind CSS · Radix UI · Recharts · React Hook Form · Zod
-
-## Installation
-
-```bash
-git clone https://github.com/your-username/saasforge-ui.git
-cd saasforge-ui
-npm install
-```
+React · TypeScript · Vite · Tailwind CSS v4 · Radix UI · Framer Motion · Recharts · React Hook Form · Zod
 
 ## Development
 
 ```bash
+git clone https://github.com/saasforge-ui/saasforge-ui.git
+cd saasforge-ui
+npm install
 npm run dev
 ```
 
-No backend, API keys, or environment variables are required to run the demo locally.
-
-## Build
+No backend, API keys or environment variables are required to run the demo locally.
 
 ```bash
-npm run build
-npm run preview
-```
-
-## Testing
-
-```bash
-npm run test        # watch mode
+npm run build       # production build
+npm run preview     # preview the build
+npm run test        # tests in watch mode
 npm run test:run    # single run (used in CI)
+npm run lint
 ```
 
 ## Project Structure
@@ -116,38 +64,29 @@ npm run test:run    # single run (used in CI)
 ```text
 src/
   components/
-    ui/               base primitives (button, card, dialog, ...)
-    free/             the 20 free, fully open-source components
-    marketing/        landing page sections
-    common/           shared layout, header/footer, code block, purchase button, etc.
-  pages/           routed pages (Home, Pricing, Components/*, Showcase)
-  data/            component metadata, mock data
-  lib/             config, utils, analytics abstraction
-  types/           shared TypeScript types
-  examples/        copy-paste usage examples per free component
+    ui/          shared primitives (button, card, dialog, tabs, ...)
+    saas/        the 95 components, grouped by category
+    marketing/   landing page sections
+    common/      layout, header/footer, code block, etc.
+  templates/     the 7 full-page templates
+  examples/      usage example per component
+  pages/         routed pages (Home, Components/*, Templates/*, Showcase)
+  data/          component and template metadata, docs, mock data
+  lib/           config, utils, analytics, category icons
+  types/         shared TypeScript types
 ```
 
 ## Customization
 
-- Theme tokens live in [`src/index.css`](src/index.css) as CSS variables (`--primary`, `--background`, etc.) — swap
-  them to reskin the whole library without touching component code.
-- Pricing, launch offers and Ko-fi links are configuration-driven — see [`src/lib/config.ts`](src/lib/config.ts).
-- Component metadata (free/pro flag, category, tags) lives in [`src/data/components.ts`](src/data/components.ts).
+- Theme tokens live in [`src/index.css`](src/index.css) as CSS variables (`--primary`, `--background`, motion easing
+  tokens, etc.) — swap them to reskin the whole library without touching component code.
+- Site links (GitHub, optional Ko-fi donations) are configured via environment variables — see
+  [`.env.example`](.env.example) and [`src/lib/config.ts`](src/lib/config.ts).
 
-## Pricing
+## Contributing
 
-| | Free | Pro | Ultimate |
-| --- | --- | --- | --- |
-| Price | $0 | $19 | $49 |
-| Components | 25 | 90 | 95 |
-| Full source | — | ✓ | ✓ |
-| Dark mode | ✓ | ✓ | ✓ |
-| Commercial usage | — | ✓ | ✓ |
-| Dashboard templates | — | — | 7 |
-| Ultimate-exclusive components | — | — | 5 |
-| Lifetime updates | — | ✓ | ✓ |
+Issues and pull requests are welcome.
 
 ## License
 
-Free components in this repository: MIT (see [`LICENSE`](LICENSE)). SaaSForge UI Pro is a separately licensed
-commercial product for use in purchasers' own projects.
+[MIT](LICENSE) — free for personal and commercial use.

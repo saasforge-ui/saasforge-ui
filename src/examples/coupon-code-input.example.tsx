@@ -1,4 +1,4 @@
-import { CouponCodeInput } from "@/components/free/coupon-code-input";
+import { CouponCodeInput } from "@/components/saas/ecommerce/coupon-code-input";
 
 export default function Example() {
   return (

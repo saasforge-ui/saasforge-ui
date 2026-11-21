@@ -1,4 +1,4 @@
-import { FAQAccordionSection } from "@/components/free/faq-accordion-section";
+import { FAQAccordionSection } from "@/components/saas/marketing/faq-accordion-section";
 
 export default function Example() {
   return (

@@ -1,4 +1,4 @@
-import { AnnouncementBanner } from "@/components/free/announcement-banner";
+import { AnnouncementBanner } from "@/components/saas/communication/announcement-banner";
 
 export default function Example() {
   return (

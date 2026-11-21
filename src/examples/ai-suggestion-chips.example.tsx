@@ -1,6 +1,6 @@
 import * as React from "react";
 import { BarChart3, Lightbulb, Mail, PenLine } from "lucide-react";
-import { AiSuggestionChips } from "@/components/free/ai-suggestion-chips";
+import { AiSuggestionChips } from "@/components/saas/ai/ai-suggestion-chips";
 
 export default function Example() {
   const [selected, setSelected] = React.useState<string | null>(null);

@@ -3,7 +3,6 @@ import { SiteLayout } from "@/components/common/site-layout";
 import { ScrollToTop } from "@/components/common/scroll-to-top";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
-import Pricing from "@/pages/Pricing";
 import Showcase from "@/pages/Showcase";
 import NotFound from "@/pages/NotFound";
 import ComponentsLayout from "@/pages/components/ComponentsLayout";
@@ -22,7 +21,7 @@ function App() {
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/pricing" element={<Navigate to="/" replace />} />
           <Route path="/docs" element={<Navigate to="/components" replace />} />
           <Route path="/templates" element={<TemplatesIndex />} />
           <Route path="/templates/:slug" element={<TemplateDetail />} />

@@ -1,10 +1,7 @@
 import * as React from "react";
-import { Link, Navigate, useParams } from "react-router-dom";
-import { Sparkles } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Navigate, useParams } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { CodeBlock } from "@/components/common/code-block";
-import { PurchaseButton } from "@/components/common/purchase-button";
 import { getComponentBySlug } from "@/data/components";
 import { componentDocs } from "@/data/component-docs";
 import { trackEvent } from "@/lib/analytics";
@@ -28,18 +25,7 @@ export default function ComponentDetail() {
   return (
     <div className="max-w-3xl space-y-10">
       <div>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-semibold tracking-tight">{component.name}</h1>
-          {component.isFree ? (
-            <Badge variant="success">FREE</Badge>
-          ) : component.ultimateOnly ? (
-            <Badge variant="secondary" className="border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400">
-              ULTIMATE
-            </Badge>
-          ) : (
-            <Badge variant="secondary">PRO</Badge>
-          )}
-        </div>
+        <h1 className="text-2xl font-semibold tracking-tight">{component.name}</h1>
         <p className="mt-2 text-muted-foreground">{component.description}</p>
         <div className="mt-3 flex flex-wrap gap-1.5">
           {component.tags.map((tag) => (
@@ -54,43 +40,12 @@ export default function ComponentDetail() {
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Live Preview</h2>
         <Card>
           <CardContent className="flex items-center justify-center p-8">
-            {doc ? (
-              doc.preview
-            ) : (
-              <div className="flex w-full flex-col items-center gap-4 rounded-lg border border-primary/20 bg-primary/5 py-12 text-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Sparkles className="h-6 w-6" aria-hidden="true" />
-                </span>
-                <div>
-                  <p className="font-medium">
-                    Full preview available in {component.ultimateOnly ? "Ultimate" : "Pro"}
-                  </p>
-                  <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-                    This component is part of SaaSForge UI {component.ultimateOnly ? "Ultimate" : "Pro"}. Use cases:{" "}
-                    {component.useCases.join(", ")}.
-                  </p>
-                </div>
-                <PurchaseButton size="sm" product={component.ultimateOnly ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}>
-                  Unlock in {component.ultimateOnly ? "Ultimate" : "Pro"}
-                </PurchaseButton>
-              </div>
-            )}
+            {doc ? doc.preview : <p className="text-sm text-muted-foreground">Preview coming soon.</p>}
           </CardContent>
         </Card>
-        {!component.isFree && doc && (
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-dashed border-border bg-muted/30 px-4 py-3">
-            <p className="text-sm text-muted-foreground">
-              This is a live preview with sample data. Full source, types, props and docs are part of SaaSForge UI{" "}
-              {component.ultimateOnly ? "Ultimate" : "Pro"}.
-            </p>
-            <PurchaseButton size="sm" product={component.ultimateOnly ? "saasforge-ui-ultimate" : "saasforge-ui-pro"}>
-              Unlock in {component.ultimateOnly ? "Ultimate" : "Pro"}
-            </PurchaseButton>
-          </div>
-        )}
       </section>
 
-      {component.isFree && doc && (
+      {doc && (
         <>
           <section>
             <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Installation</h2>
@@ -195,23 +150,14 @@ export default function ComponentDetail() {
         </>
       )}
 
-      {!component.isFree && (
-        <section>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Use Cases</h2>
-          <ul className="list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
-            {component.useCases.map((useCase) => (
-              <li key={useCase}>{useCase}</li>
-            ))}
-          </ul>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Want the full source, props API and documentation for this component?{" "}
-            <Link to="/pricing" className="font-medium text-primary underline-offset-4 hover:underline">
-              See pricing
-            </Link>
-            .
-          </p>
-        </section>
-      )}
+      <section>
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Use Cases</h2>
+        <ul className="list-inside list-disc space-y-1.5 text-sm text-muted-foreground">
+          {component.useCases.map((useCase) => (
+            <li key={useCase}>{useCase}</li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }

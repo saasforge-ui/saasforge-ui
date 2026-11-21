@@ -21,11 +21,9 @@ export interface ComponentProductMetadata {
   name: string;
   category: ComponentCategory;
   description: string;
-  isFree: boolean;
   tags: string[];
   difficulty: "beginner" | "intermediate" | "advanced";
   useCases: string[];
-  ultimateOnly?: boolean;
 }
 
 export interface TemplateProductMetadata {

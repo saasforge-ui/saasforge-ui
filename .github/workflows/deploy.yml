@@ -36,28 +36,12 @@ jobs:
       - name: Test
         run: npm run test:run
 
-      - name: Checkout private saasforge-ui-pro (Pro component previews)
-        uses: actions/checkout@v4
-        with:
-          repository: saasforge-ui/saasforge-ui-pro
-          token: ${{ secrets.PRO_REPO_TOKEN }}
-          path: saasforge-ui-pro
-          sparse-checkout: |
-            demo-previews
-
-      - name: Sync Pro component previews
-        run: |
-          mkdir -p src/components/premium-preview
-          cp saasforge-ui-pro/demo-previews/*.tsx src/components/premium-preview/
-          rm -rf saasforge-ui-pro
-
       - name: Build
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
           VITE_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           VITE_GITHUB_URL: https://github.com/${{ github.repository }}
-          VITE_KOFI_PRODUCT_URL: ${{ secrets.VITE_KOFI_PRODUCT_URL }}
-          VITE_KOFI_ULTIMATE_URL: ${{ secrets.VITE_KOFI_ULTIMATE_URL }}
+          VITE_KOFI_URL: ${{ vars.VITE_KOFI_URL }}
           VITE_UMAMI_WEBSITE_ID: ${{ vars.VITE_UMAMI_WEBSITE_ID }}
         run: npm run build
 

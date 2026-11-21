@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AiPromptInput } from "@/components/free/ai-prompt-input";
+import { AiPromptInput } from "@/components/saas/ai/ai-prompt-input";
 
 const models = [
   { value: "fast", label: "Fast" },

@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/common/github-icon";
-import { PurchaseButton } from "@/components/common/purchase-button";
 import { siteConfig } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
-import { freeComponents } from "@/data/components";
+import { componentRegistry } from "@/data/components";
+import { templateRegistry } from "@/data/templates";
 
 const containerVariants = {
   hidden: {},
@@ -36,7 +36,8 @@ export function HeroSection() {
         variants={itemVariants}
         className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground"
       >
-        {siteConfig.tagline} Built with React, TypeScript and Tailwind CSS — copy, customize, and ship.
+        {componentRegistry.length} components and {templateRegistry.length} full-page templates, free and open source under
+        the MIT license. Built with React, TypeScript and Tailwind CSS — copy, customize, and ship.
       </motion.p>
       <motion.div variants={itemVariants} className="mt-10 flex flex-wrap items-center justify-center gap-3">
         <Button size="lg" asChild>
@@ -45,13 +46,8 @@ export function HeroSection() {
             <ArrowRight />
           </Link>
         </Button>
-        <PurchaseButton size="lg" variant="outline">
-          Get SaaSForge UI Pro
-        </PurchaseButton>
         <Button size="lg" variant="outline" asChild>
-          <Link to="/components?tier=free" onClick={() => trackEvent("free_component_click", { path: "hero" })}>
-            Get {freeComponents.length} Components Free
-          </Link>
+          <Link to="/templates">Browse Templates</Link>
         </Button>
         <Button size="lg" variant="ghost" asChild>
           <a

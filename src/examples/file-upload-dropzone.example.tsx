@@ -1,4 +1,4 @@
-import { FileUploadDropzone } from "@/components/free/file-upload-dropzone";
+import { FileUploadDropzone } from "@/components/saas/forms/file-upload-dropzone";
 
 export default function Example() {
   return (

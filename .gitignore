@@ -14,11 +14,6 @@ dist-ssr
 .env
 .env.local
 
-# Pro component previews are pulled in at build time from the private
-# saasforge-ui-pro repo (see scripts/sync-premium-preview.sh and
-# .github/workflows/deploy.yml) — never commit their source here.
-src/components/premium-preview/
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

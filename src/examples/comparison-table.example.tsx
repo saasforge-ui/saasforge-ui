@@ -1,4 +1,4 @@
-import { ComparisonTable } from "@/components/free/comparison-table";
+import { ComparisonTable } from "@/components/saas/data/comparison-table";
 
 export default function Example() {
   return (

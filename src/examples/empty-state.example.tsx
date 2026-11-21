@@ -1,5 +1,5 @@
 import { FolderPlus } from "lucide-react";
-import { EmptyState } from "@/components/free/empty-state";
+import { EmptyState } from "@/components/saas/utilities/empty-state";
 
 export default function Example() {
   return (

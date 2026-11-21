@@ -1,4 +1,4 @@
-import { OrderSummaryCard } from "@/components/free/order-summary-card";
+import { OrderSummaryCard } from "@/components/saas/ecommerce/order-summary-card";
 
 export default function Example() {
   return (

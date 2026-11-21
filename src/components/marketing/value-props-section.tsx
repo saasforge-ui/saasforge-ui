@@ -1,4 +1,4 @@
-import { Code2, ShieldCheck, Sparkles, Layers3 } from "lucide-react";
+import { Code2, ShieldCheck, Zap, Layers3 } from "lucide-react";
 
 const props = [
   {
@@ -12,7 +12,7 @@ const props = [
     description: "Loading states, empty states, validation, responsive behavior and accessibility included.",
   },
   {
-    icon: Sparkles,
+    icon: Zap,
     title: "TypeScript First",
     description: "Strong types and predictable component APIs.",
   },

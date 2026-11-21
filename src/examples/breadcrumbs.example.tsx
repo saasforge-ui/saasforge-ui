@@ -1,4 +1,4 @@
-import { Breadcrumbs } from "@/components/free/breadcrumbs";
+import { Breadcrumbs } from "@/components/saas/navigation/breadcrumbs";
 
 export default function Example() {
   return (

@@ -2,15 +2,12 @@ export type AnalyticsEvent =
   | "page_view"
   | "component_preview"
   | "template_preview"
-  | "free_component_click"
   | "github_click"
-  | "pricing_view"
-  | "purchase_click";
+  | "support_click";
 
 export interface AnalyticsPayload {
   component?: string;
   category?: string;
-  tier?: "free" | "pro" | "ultimate";
   path?: string;
   [key: string]: string | number | boolean | undefined;
 }

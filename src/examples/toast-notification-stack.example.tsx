@@ -1,4 +1,4 @@
-import { ToastNotificationStack } from "@/components/free/toast-notification-stack";
+import { ToastNotificationStack } from "@/components/saas/notifications/toast-notification-stack";
 
 export default function Example() {
   return <ToastNotificationStack />;

@@ -1,4 +1,4 @@
-import { OrderConfirmationCard } from "@/components/free/order-confirmation-card";
+import { OrderConfirmationCard } from "@/components/saas/ecommerce/order-confirmation-card";
 
 export default function Example() {
   return (

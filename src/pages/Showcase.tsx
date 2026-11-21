@@ -32,7 +32,7 @@ export default function Showcase() {
           Dark
         </button>
       </div>
-      {doc ? doc.preview : <p className="text-center text-muted-foreground">Preview available in Pro.</p>}
+      {doc ? doc.preview : <p className="text-center text-muted-foreground">Preview coming soon.</p>}
     </ComponentPreviewFrame>
   );
 }

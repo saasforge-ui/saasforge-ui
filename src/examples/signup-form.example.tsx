@@ -1,4 +1,4 @@
-import { SignupForm } from "@/components/free/signup-form";
+import { SignupForm } from "@/components/saas/auth/signup-form";
 
 export default function Example() {
   return (

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { categories, componentRegistry } from "@/data/components";
 
@@ -9,8 +8,8 @@ export default function ComponentsIndex() {
       <div>
         <h1 className="text-2xl font-semibold tracking-tight">Component Showcase</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
-          {componentRegistry.length} production-ready React components for SaaS dashboards. Free components include
-          full source code; Pro components are preview-only until you upgrade.
+          {componentRegistry.length} production-ready React components for SaaS dashboards. Every component is free and open source
+          (MIT), with full source, docs and examples.
         </p>
       </div>
 
@@ -24,21 +23,7 @@ export default function ComponentsIndex() {
                 <Link key={component.slug} to={`/components/${component.slug}`}>
                   <Card className="h-full transition-colors hover:border-primary/40">
                     <CardHeader>
-                      <div className="flex items-start justify-between gap-2">
-                        <CardTitle className="text-base">{component.name}</CardTitle>
-                        {component.isFree ? (
-                          <Badge variant="success">FREE</Badge>
-                        ) : component.ultimateOnly ? (
-                          <Badge
-                            variant="secondary"
-                            className="border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400"
-                          >
-                            ULTIMATE
-                          </Badge>
-                        ) : (
-                          <Badge variant="secondary">PRO</Badge>
-                        )}
-                      </div>
+                      <CardTitle className="text-base">{component.name}</CardTitle>
                       <CardDescription>{component.description}</CardDescription>
                     </CardHeader>
                     <CardContent className="flex flex-wrap gap-1.5">

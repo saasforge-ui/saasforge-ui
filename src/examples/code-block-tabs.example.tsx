@@ -1,4 +1,4 @@
-import { CodeBlockTabs } from "@/components/free/code-block-tabs";
+import { CodeBlockTabs } from "@/components/saas/developer/code-block-tabs";
 
 export default function Example() {
   return (

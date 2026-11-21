@@ -1,4 +1,4 @@
-import { StepperWizardNav } from "@/components/free/stepper-wizard-nav";
+import { StepperWizardNav } from "@/components/saas/navigation/stepper-wizard-nav";
 
 export default function Example() {
   return (

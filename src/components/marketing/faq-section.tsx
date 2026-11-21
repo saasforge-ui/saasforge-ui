@@ -2,18 +2,19 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What do I get with SaaSForge UI Pro?",
+    question: "Is SaaSForge UI really free?",
     answer:
-      "All production-ready components — and every new one we ship after — with full TypeScript source, dark mode, documentation, usage examples, and lifetime updates for a single one-time payment.",
+      "Yes. Every component and template is free and open source under the MIT license — full TypeScript source, docs and examples, no paid tiers or locked features.",
   },
   {
     question: "Can I use SaaSForge UI in commercial projects?",
-    answer: "Yes. Pro and Ultimate licenses both include commercial usage rights for client and internal SaaS projects.",
+    answer:
+      "Yes. The MIT license allows commercial use in client work, internal tools and products you sell. Just keep the license notice.",
   },
   {
-    question: "Do the free components expire or become limited?",
+    question: "How do I add a component to my project?",
     answer:
-      "No. The free components remain fully usable indefinitely — there's no trial period or feature reduction.",
+      "Open any component page, copy the source into your project and install the listed dependencies. Each page includes a usage example and the full props reference.",
   },
   {
     question: "Does this include a backend or database?",
@@ -21,12 +22,8 @@ const faqs = [
       "No. SaaSForge UI is entirely frontend. Components receive data and callbacks through props so you can wire them up to whatever backend you use.",
   },
   {
-    question: "How do I pay?",
-    answer: "Purchases are handled through Ko-fi. Clicking a purchase button redirects you to a secure Ko-fi checkout.",
-  },
-  {
-    question: "Will I get future updates?",
-    answer: "Yes, Pro and Ultimate include lifetime updates as new components and improvements ship.",
+    question: "Can I contribute?",
+    answer: "Yes. Issues and pull requests are welcome on GitHub.",
   },
 ];
 
