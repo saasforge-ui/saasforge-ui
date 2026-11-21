@@ -1,15 +1,16 @@
 # SaaSForge UI
 
-Free, open-source React components for modern SaaS dashboards.
+Free forever, open-source React components for modern SaaS dashboards.
 
 [Live Demo](https://saasforge-ui.github.io/saasforge-ui/) · [Components](https://saasforge-ui.github.io/saasforge-ui/components) · [Templates](https://saasforge-ui.github.io/saasforge-ui/templates)
 
 > Stop rebuilding the same SaaS dashboard UI. 95 components and 7 full-page templates built with React, TypeScript
-> and Tailwind CSS — all MIT licensed. Copy, customize, ship.
+> and Tailwind CSS — free forever and MIT licensed. Copy, customize, ship.
 
 ## Why SaaSForge UI?
 
-- **Free and open source** — every component and template, with full source, docs and examples. MIT licensed, including commercial use.
+- **Free forever** — every component and template, with full source, docs and examples. MIT licensed, including
+  commercial use. No paid tiers, no locked features, no license keys — now or later.
 - **Copy & Customize** — no black-box package; take the source and make it yours.
 - **Production Ready** — loading, empty and error states, validation, responsive behavior and accessibility included.
 - **TypeScript First** — strong types and predictable component APIs.
@@ -87,6 +88,12 @@ src/
 
 Issues and pull requests are welcome.
 
+## Support
+
+SaaSForge UI is and will stay free. If it saves you time, you can support its development:
+
+<a href='https://ko-fi.com/V7V31NX2L8' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ## License
 
-[MIT](LICENSE) — free for personal and commercial use.
+[MIT](LICENSE) — free forever, for personal and commercial use.

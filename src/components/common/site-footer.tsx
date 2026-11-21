@@ -12,7 +12,7 @@ export function SiteFooter() {
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Layers className="h-4 w-4" />
           <span>
-            &copy; {new Date().getFullYear()} {siteConfig.name}. Free and open source under the MIT license.
+            &copy; {new Date().getFullYear()} {siteConfig.name}. Free forever, open source under the MIT license.
           </span>
         </div>
         <div className="flex flex-wrap items-center gap-6 text-sm">
