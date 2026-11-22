@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Browse the components
+    url: https://saasforge-ui.github.io/saasforge-ui/components
+    about: Live previews, source and docs for every component.
+  - name: Report a security vulnerability
+    url: https://github.com/saasforge-ui/saasforge-ui/security/advisories/new
+    about: Please report security issues privately, not as public issues.

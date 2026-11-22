@@ -86,7 +86,9 @@ src/
 
 ## Contributing
 
-Issues and pull requests are welcome.
+Issues and pull requests are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the setup, the checklist for
+adding a component and the project conventions. Please follow our [Code of Conduct](CODE_OF_CONDUCT.md), and report
+security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## Support
 
