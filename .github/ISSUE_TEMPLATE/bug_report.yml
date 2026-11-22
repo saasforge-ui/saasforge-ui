@@ -1,0 +1,50 @@
+name: Bug report
+description: Something in a component or template doesn't work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug! For security issues, please use [private reporting](https://github.com/saasforge-ui/saasforge-ui/security/advisories/new) instead.
+  - type: input
+    id: component
+    attributes:
+      label: Component or template
+      description: Name or link to the docs page, e.g. "Kanban Board" or https://saasforge-ui.github.io/saasforge-ui/components/kanban-board
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where does it happen?
+      options:
+        - On the demo site
+        - In my own project, after copying the component
+        - Both
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and OS
+      placeholder: e.g. Chrome 131 on macOS, Safari on iOS 18
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or additional context
